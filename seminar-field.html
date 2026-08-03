@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="이론에서 실무 통제까지 연결하는 AI-Native Software Engineering 현장 확장 세미나" />
+  <title>AI-Native SE — Theory to Field</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="field-seminar" data-theme="flow">
+  <div class="reading-progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="세미나 선택으로 돌아가기"><span class="brand-mark">AI</span><span>AI-NATIVE SE</span></a>
+    <nav class="desktop-nav" aria-label="현장 확장 세미나 목차">
+      <a href="#theory">THEORY</a><a href="#spec">SPEC</a><a href="#design">DESIGN</a>
+      <a href="#validate">VALIDATE</a><a href="#control">CONTROL</a>
+    </nav>
+    <div class="header-actions">
+      <a class="version-link" href="seminar.html?theme=flow">ORIGINAL</a>
+      <button class="icon-button" id="presentButton" type="button" aria-label="발표 집중 모드" title="발표 모드 (P)">P</button>
+      <button class="menu-button" id="menuButton" type="button" aria-label="메뉴 열기"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#theory">THEORY</a><a href="#spec">SPEC</a><a href="#design">DESIGN</a>
+    <a href="#validate">VALIDATE</a><a href="#control">CONTROL</a>
+  </aside>
+
+  <main>
+    <section class="scene field-hero" id="top" data-scene="00">
+      <div class="field-hero-copy reveal">
+        <p class="eyebrow">THEORY FIRST · FIELD NEXT · END-TO-END OWNERSHIP</p>
+        <h1>AI가 더 많이 만들수록,<br /><em>누군가는 전체를 봐야 한다.</em></h1>
+        <p>AI-DLC와 표준으로 기준을 세우고, 살아 있는 명세·변화에 강한 설계·시스템 검증으로 실제 서비스를 통제합니다.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#theory">이론부터 시작 <span>↓</span></a>
+          <button class="text-button" type="button" data-open-dialog="fieldAgendaDialog">확장판 아젠다</button>
+        </div>
+      </div>
+
+      <div class="control-core reveal" aria-label="명세, 설계, 검증을 통제하는 엔지니어">
+        <div class="core-pulse"></div>
+        <article class="core-person"><span>H</span><strong>END-TO-END<br />ENGINEER</strong><small>판단 · 연결 · 통제</small></article>
+        <article class="core-satellite sat-spec"><span>01</span><b>LIVING SPEC</b><small>의도를 기준으로</small></article>
+        <article class="core-satellite sat-design"><span>02</span><b>EVOLVABLE DESIGN</b><small>변화를 국소화</small></article>
+        <article class="core-satellite sat-validate"><span>03</span><b>SYSTEM VALIDATION</b><small>운영처럼 검증</small></article>
+        <svg viewBox="0 0 700 540" aria-hidden="true"><path d="M350 270 C250 185 190 145 120 120"/><path d="M350 270 C455 180 520 150 585 120"/><path d="M350 270 C350 375 350 420 350 485"/></svg>
+      </div>
+
+      <div class="field-thesis reveal">
+        <span>THE THESIS</span>
+        <strong>CODE IS CHEAPER.</strong><strong>CHANGE IS FASTER.</strong><strong>CONTROL IS HARDER.</strong>
+      </div>
+      <a class="scroll-cue" href="#theory"><span></span>BUILD THE FOUNDATION</a>
+    </section>
+
+    <section class="scene chapter theory-stage" id="theory" data-scene="01">
+      <div class="section-number">PART I / FOUNDATION</div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">FIRST, THE THEORY</p>
+        <h2>AI는 개발을 가속합니다.<br /><em>SE는 방향과 책임을 지킵니다.</em></h2>
+        <p>실무 기법부터 시작하면 도구 사용법만 남습니다. 먼저 무엇을 통제해야 하는지 공통 언어를 만듭니다.</p>
+      </div>
+
+      <div class="foundation-grid reveal">
+        <article><span>01</span><b>AI-DLC</b><h3>AI와 사람이 전 과정에서 협업</h3><p>기획·설계·구현·테스트·운영을 AI가 가속하고, 사람은 중요한 결정을 승인합니다.</p></article>
+        <article><span>02</span><b>STANDARDS</b><h3>빠뜨리지 않게 하는 공통 기준</h3><p>12207·5338·29148·25010·SSDF·AI RMF가 생명주기, 요구, 품질, 보안, 위험을 채웁니다.</p></article>
+        <article><span>03</span><b>V&amp;V</b><h3>만든 것과 필요한 것을 모두 확인</h3><p>Verification은 명세대로 만들었는지, Validation은 실제로 쓸 만한지 묻습니다.</p></article>
+        <article><span>04</span><b>OWNERSHIP</b><h3>결정은 다시 사람에게 돌아온다</h3><p>AI의 출력 속도가 빨라질수록 변경 영향·위험·출시 여부를 판단하는 책임이 커집니다.</p></article>
+      </div>
+
+      <div class="theory-equation reveal" aria-label="AI 네이티브 엔지니어링 공식">
+        <div><span>AI EXECUTION</span><b>속도</b></div><i>×</i>
+        <div><span>HUMAN JUDGMENT</span><b>방향</b></div><i>×</i>
+        <div><span>VERIFIABLE EVIDENCE</span><b>신뢰</b></div><i>=</i>
+        <div class="result"><span>ENGINEERED SYSTEM</span><b>운영 가능한 서비스</b></div>
+      </div>
+    </section>
+
+    <section class="impact-break scene" data-scene="02">
+      <div class="impact-copy reveal"><span>THEORY → FIELD</span><h2>이제 질문을 바꿉니다.</h2></div>
+      <div class="question-shift reveal">
+        <article><small>BEFORE</small><p>“AI로 얼마나 빨리 만들었는가?”</p></article>
+        <b>→</b>
+        <article><small>NOW</small><p>“변경되어도 끝까지 통제할 수 있는가?”</p></article>
+      </div>
+    </section>
+
+    <section class="scene chapter field-pillar" id="spec" data-scene="03">
+      <div class="section-number">FIELD 01 / LIVING SPEC</div>
+      <div class="pillar-kicker reveal"><span>SPEC</span><i></i><b>의도를 저장소의 실행 기준으로</b></div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">REQUIREMENTS THAT MOVE THE WORK</p>
+        <h2>요구사항은 완료되는 문서가 아니라<br /><em>계속 진화하는 기준입니다.</em></h2>
+      </div>
+
+      <div class="spec-workbench reveal">
+        <div class="repo-tree">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>repository / docs</span></div>
+          <button class="active" type="button" data-spec-file="product"><span>◆</span> product-requirements.md</button>
+          <button type="button" data-spec-file="acceptance"><span>◇</span> acceptance-criteria.md</button>
+          <button type="button" data-spec-file="architecture"><span>◇</span> architecture.md</button>
+          <button type="button" data-spec-file="nonfunctional"><span>◇</span> non-functional.md</button>
+          <button type="button" data-spec-file="decision"><span>◇</span> decisions/ADR-004.md</button>
+        </div>
+        <article class="md-document" id="specDocument">
+          <div><span>product-requirements.md</span><b>LIVE</b></div>
+          <pre><code><em># 고객지원 Copilot</em>
+
+<strong>## Outcome</strong>
+반복 문의 응답시간 30% 단축
+
+<strong>## Boundary</strong>
+- 승인된 지식만 사용
+- 결제·환불 판단은 사람에게 이관
+
+<strong>## Acceptance</strong>
+- 근거 표시율 ≥ 98%
+- 고위험 오답률 &lt; 1%
+- P95 응답시간 ≤ 3초</code></pre>
+        </article>
+      </div>
+
+      <div class="spec-loop reveal">
+        <article><span>01</span><b>MD 변경</b><p>의도와 기준을 먼저 수정</p></article><i>→</i>
+        <article><span>02</span><b>영향 분석</b><p>설계·API·데이터 추적</p></article><i>→</i>
+        <article><span>03</span><b>AI 실행</b><p>계획·코드·테스트 변경</p></article><i>→</i>
+        <article><span>04</span><b>증거 갱신</b><p>실행 결과까지 동기화</p></article>
+      </div>
+      <blockquote class="impact-quote reveal">문서가 코드를 설명하는 것이 아니라, <em>문서가 변경을 움직여야 합니다.</em></blockquote>
+    </section>
+
+    <section class="scene chapter field-pillar" id="design" data-scene="04">
+      <div class="section-number">FIELD 02 / EVOLVABLE DESIGN</div>
+      <div class="pillar-kicker reveal"><span>DESIGN</span><i></i><b>미래를 예측하지 말고 변경을 격리</b></div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">DESIGN FOR CHANGE, NOT FOR EVERYTHING</p>
+        <h2>좋은 확장성은 기능을 많이 넣는 것이 아니라<br /><em>변경의 폭발 반경을 줄이는 것입니다.</em></h2>
+      </div>
+
+      <div class="change-simulator reveal">
+        <div class="change-controls">
+          <span>CHANGE EVENT</span><h3>요구사항이 바뀌었습니다.</h3><p>변경 유형을 눌러 영향 범위를 확인하세요.</p>
+          <button class="active" type="button" data-change="model">AI 모델 교체</button>
+          <button type="button" data-change="policy">환불 정책 변경</button>
+          <button type="button" data-change="channel">모바일 채널 추가</button>
+          <div id="changeMessage"><b>모델 어댑터</b>만 교체하고 골든셋을 재실행합니다.</div>
+        </div>
+        <div class="architecture-map" id="architectureMap">
+          <article data-module="channel"><span>01</span><b>CHANNELS</b><small>Web · App · Agent</small></article>
+          <i>→</i><article data-module="api"><span>02</span><b>API CONTRACT</b><small>Stable Boundary</small></article>
+          <i>→</i><article data-module="domain"><span>03</span><b>DOMAIN RULES</b><small>Policy · Workflow</small></article>
+          <i>→</i><article class="affected" data-module="ai"><span>04</span><b>AI ADAPTER</b><small>Model · Prompt · RAG</small></article>
+          <i>→</i><article data-module="data"><span>05</span><b>DATA &amp; OPS</b><small>Store · Observe</small></article>
+        </div>
+      </div>
+
+      <div class="design-rules reveal">
+        <article><span>BOUNDARY</span><h3>경계가 명확해야 한다</h3><p>API 계약과 도메인 규칙을 AI 모델에서 분리합니다.</p></article>
+        <article><span>VERSION</span><h3>모든 변경을 되돌릴 수 있어야 한다</h3><p>코드·프롬프트·모델·데이터·정책을 함께 버전관리합니다.</p></article>
+        <article><span>OBSERVE</span><h3>변경 결과를 볼 수 있어야 한다</h3><p>로그·지표·추적·비용을 설계에 포함합니다.</p></article>
+      </div>
+      <blockquote class="impact-quote reveal">확장 가능한 설계란 모든 미래를 맞히는 설계가 아니라, <em>틀려도 고치기 쉬운 설계입니다.</em></blockquote>
+    </section>
+
+    <section class="scene chapter field-pillar" id="validate" data-scene="05">
+      <div class="section-number">FIELD 03 / SYSTEM-LEVEL VALIDATION</div>
+      <div class="pillar-kicker reveal"><span>VALIDATE</span><i></i><b>코드가 아니라 서비스 전체를 검증</b></div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">RELEASE CONFIDENCE LIVES ABOVE THE UNIT</p>
+        <h2>UT는 기본 위생입니다.<br /><em>출시 신뢰는 시스템에서 얻습니다.</em></h2>
+      </div>
+
+      <div class="validation-ladder reveal">
+        <article class="unit"><span>01</span><h3>UNIT</h3><p>함수·모듈</p><small>빠른 피드백</small></article>
+        <article class="contract"><span>02</span><h3>CONTRACT</h3><p>API·Schema</p><small>약속 보호</small></article>
+        <article class="integration"><span>03</span><h3>INTEGRATION</h3><p>DB·외부 API·모델</p><small>연결 검증</small></article>
+        <article class="stage"><span>04</span><h3>STAGE / E2E</h3><p>실사용자 여정</p><small>환경 포함</small></article>
+        <article class="performance"><span>05</span><h3>PERFORMANCE</h3><p>부하·지연·비용</p><small>규모 검증</small></article>
+        <article class="resilience"><span>06</span><h3>AI EVAL / RESILIENCE</h3><p>환각·장애·복구</p><small>운영 신뢰</small></article>
+      </div>
+
+      <div class="validation-balance reveal">
+        <div class="balance-copy"><span>THE TESTING SHIFT</span><h3>테스트 개수보다<br />위험을 얼마나 덮는지가 중요합니다.</h3></div>
+        <div class="confidence-bars">
+          <div><span>로컬 코드 신뢰</span><i style="--value:32%"></i><b>UT</b></div>
+          <div><span>연결 신뢰</span><i style="--value:66%"></i><b>INTEGRATION</b></div>
+          <div><span>출시 신뢰</span><i style="--value:92%"></i><b>STAGE · E2E · PERF</b></div>
+        </div>
+      </div>
+
+      <div class="release-gate reveal">
+        <span>RELEASE GATE</span>
+        <div><b>기능</b><small>E2E 통과</small></div><div><b>연결</b><small>계약 위반 0</small></div>
+        <div><b>성능</b><small>P95 ≤ 3s</small></div><div><b>AI 품질</b><small>고위험 오류 &lt; 1%</small></div>
+        <div><b>복구</b><small>Rollback 검증</small></div><strong>GO?</strong>
+      </div>
+      <blockquote class="impact-quote reveal">테스트의 목적은 버그를 많이 찾는 것이 아니라, <em>출시 결정을 증거로 만드는 것입니다.</em></blockquote>
+    </section>
+
+    <section class="scene chapter control-stage" id="control" data-scene="06">
+      <div class="section-number">FIELD 04 / END-TO-END CONTROL</div>
+      <div class="pillar-kicker reveal"><span>CONTROL</span><i></i><b>전체를 연결하는 인간의 역량</b></div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">THE HUMAN CONTROL PLANE</p>
+        <h2>AI 시대의 핵심 인재는<br /><em>전체 맥락을 잃지 않는 사람입니다.</em></h2>
+      </div>
+
+      <div class="control-room reveal">
+        <div class="control-radar">
+          <i></i><i></i><i></i>
+          <span class="radar-sweep"></span>
+          <article><b>ENGINEER</b><small>END-TO-END<br />OWNERSHIP</small></article>
+        </div>
+        <div class="control-questions">
+          <article><span>01 · INTENT</span><h3>왜 만드는가?</h3><p>사용자 가치와 실패의 피해를 판단합니다.</p></article>
+          <article><span>02 · IMPACT</span><h3>어디까지 바뀌는가?</h3><p>설계·데이터·API·운영 영향을 연결합니다.</p></article>
+          <article><span>03 · EVIDENCE</span><h3>무엇으로 믿을 것인가?</h3><p>테스트·로그·지표·승인 근거를 요구합니다.</p></article>
+          <article><span>04 · RECOVERY</span><h3>실패하면 돌아갈 수 있는가?</h3><p>관찰·대체절차·롤백·책임자를 확인합니다.</p></article>
+        </div>
+      </div>
+
+      <div class="hero-vs-system reveal">
+        <article><span>FRAGILE</span><h3>영웅 한 명의 머릿속</h3><p>요구·설계·장애대응이 개인의 기억에만 존재</p><b>떠나면 통제도 사라진다</b></article>
+        <i>→</i>
+        <article><span>SCALABLE</span><h3>개인의 판단을 시스템에 남긴다</h3><p>MD·ADR·계약·자동검증·관찰성으로 조직화</p><b>누구나 같은 기준으로 반복한다</b></article>
+      </div>
+
+      <div class="control-manifesto reveal">
+        <p>THE NEW ENGINEERING LEVERAGE</p>
+        <h2>AI는 실행 범위를 넓히고,<br /><em>엔지니어는 통제 범위를 넓힌다.</em></h2>
+      </div>
+    </section>
+
+    <section class="scene chapter field-case" id="scenario" data-scene="07">
+      <div class="section-number">FIELD LAB / CHANGE EVENT</div>
+      <div class="chapter-head reveal"><p class="eyebrow">ONE CHANGE, THE WHOLE LOOP</p><h2>요구사항 하나가 바뀌면<br /><em>무엇을 통제해야 할까요?</em></h2></div>
+      <div class="change-event reveal">
+        <div class="event-alert"><span>LIVE CHANGE</span><h3>“환불정책이 오늘부터 변경됩니다.”</h3><p>7일 이내 자동 안내 → 상품군별 7·14·30일 차등 적용</p><button type="button" id="runChange">변경 영향 추적 시작 <b>→</b></button></div>
+        <ol id="changeTrace">
+          <li class="active"><span>01</span><div><b>SPEC</b><p>정책과 인수 기준 수정</p></div><small>WAITING</small></li>
+          <li><span>02</span><div><b>DESIGN</b><p>도메인 규칙과 API 영향 확인</p></div><small>WAITING</small></li>
+          <li><span>03</span><div><b>BUILD</b><p>AI가 변경 계획·코드·테스트 제안</p></div><small>WAITING</small></li>
+          <li><span>04</span><div><b>VALIDATE</b><p>통합·E2E·성능·회귀 검증</p></div><small>WAITING</small></li>
+          <li><span>05</span><div><b>CONTROL</b><p>증거 확인 후 출시·롤백 결정</p></div><small>WAITING</small></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="scene field-finale" id="final" data-scene="08">
+      <div class="final-sequence reveal">
+        <span>THEORY GIVES THE STANDARD</span><i>↓</i><span>FIELD PRACTICE BUILDS THE SYSTEM</span><i>↓</i><span>HUMAN OWNERSHIP KEEPS CONTROL</span>
+      </div>
+      <div class="final-lockup reveal">
+        <p>AI-NATIVE SOFTWARE ENGINEERING</p>
+        <h2><span>SPEC</span><i>→</i><span>DESIGN</span><i>→</i><span>VALIDATE</span><i>→</i><em>CONTROL</em></h2>
+        <blockquote>AI가 코드를 작성해도,<br />시스템의 방향과 책임까지 대신할 수는 없습니다.</blockquote>
+        <div class="hero-actions"><a class="primary-button" href="#top">다시 보기 <span>↑</span></a><a class="text-button" href="seminar.html?theme=flow">기존 이론 중심 버전 보기</a></div>
+      </div>
+      <footer><span>AI-NATIVE SE · FIELD EDITION</span><p>SE Organization Tech Seminar · Designed for GitHub Pages</p><a href="index.html">ALL VERSIONS ↑</a></footer>
+    </section>
+  </main>
+
+  <dialog id="fieldAgendaDialog">
+    <button type="button" class="dialog-close" data-close-dialog aria-label="닫기">×</button>
+    <span class="eyebrow">THEORY → FIELD · 100 MIN</span><h2>확장판 아젠다</h2>
+    <ol><li><b>20분</b> AI-DLC·표준·V&amp;V 이론</li><li><b>15분</b> Living Spec.md</li><li><b>15분</b> 변화에 강한 설계</li><li><b>20분</b> 시스템 수준 검증</li><li><b>20분</b> End-to-End 통제 역량</li><li><b>10분</b> 변경 이벤트 실습</li></ol>
+  </dialog>
+  <dialog id="keyboardDialog">
+    <button type="button" class="dialog-close" data-close-dialog aria-label="닫기">×</button>
+    <span class="eyebrow">KEYBOARD</span><h2>빠른 조작</h2>
+    <div class="shortcut-grid"><kbd>P</kbd><span>발표 집중 모드</span><kbd>?</kbd><span>이 도움말</span><kbd>ESC</kbd><span>창 닫기</span></div>
+  </dialog>
+  <button class="help-button" type="button" data-open-dialog="keyboardDialog" aria-label="키보드 도움말">?</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

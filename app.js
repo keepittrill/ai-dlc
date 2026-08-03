@@ -186,6 +186,71 @@
   }
   checklist?.addEventListener("change", updateScore);
 
+  // Field edition: repository-based living specification explorer.
+  const specFiles = {
+    product: ["product-requirements.md", `<em># 고객지원 Copilot</em>\n\n<strong>## Outcome</strong>\n반복 문의 응답시간 30% 단축\n\n<strong>## Boundary</strong>\n- 승인된 지식만 사용\n- 결제·환불 판단은 사람에게 이관\n\n<strong>## Acceptance</strong>\n- 근거 표시율 ≥ 98%\n- 고위험 오답률 &lt; 1%\n- P95 응답시간 ≤ 3초`],
+    acceptance: ["acceptance-criteria.md", `<em># Acceptance Criteria</em>\n\n<strong>## AC-07 · 고위험 질문</strong>\nGiven 결제·환불 판단이 필요한 질문\nWhen AI가 신뢰 가능한 근거를 찾지 못하면\nThen 추측하지 않고 상담원에게 이관한다\n\n<strong>## Evidence</strong>\n- E2E: TC-044\n- Golden set: GS-HIGH-RISK`],
+    architecture: ["architecture.md", `<em># Architecture Boundary</em>\n\n<strong>## Stable Core</strong>\nChannel → API Contract → Domain Rules\n\n<strong>## Replaceable Edge</strong>\n- Model Adapter\n- Prompt & Retrieval\n- Safety Filter\n\n<strong>## Principle</strong>\n모델 변경이 업무 규칙을 흔들지 않는다.`],
+    nonfunctional: ["non-functional.md", `<em># Non-Functional Requirements</em>\n\n<strong>## Performance</strong>\n- P95 latency ≤ 3s\n- 300 concurrent users\n\n<strong>## Reliability</strong>\n- AI provider timeout: 5s\n- Fallback response available\n\n<strong>## Cost</strong>\n- 평균 요청 비용 ≤ ₩18`],
+    decision: ["decisions/ADR-004.md", `<em># ADR-004 · 정책과 모델 분리</em>\n\n<strong>## Decision</strong>\n환불 규칙은 Domain 계층에서 관리한다.\nLLM은 정책을 결정하지 않고 설명만 한다.\n\n<strong>## Why</strong>\n- 정책 변경을 즉시 반영\n- 결과를 결정론적으로 테스트\n- 모델 교체 영향 최소화`]
+  };
+  const specDocument = document.getElementById("specDocument");
+  document.querySelectorAll("[data-spec-file]").forEach(button => button.addEventListener("click", () => {
+    document.querySelectorAll("[data-spec-file]").forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+    const [name,content] = specFiles[button.dataset.specFile];
+    if (specDocument) specDocument.innerHTML = `<div><span>${name}</span><b>LIVE</b></div><pre><code>${content}</code></pre>`;
+    showToast(`${name} · 실행 기준 확인`);
+  }));
+
+  // Field edition: visualize how modular boundaries contain requirement changes.
+  const changes = {
+    model: { modules:["ai"], message:["모델 어댑터","만 교체하고 골든셋을 재실행합니다."] },
+    policy: { modules:["domain","api"], message:["도메인 규칙과 API 계약","을 수정하고 정책 회귀 시나리오를 검증합니다."] },
+    channel: { modules:["channel","api"], message:["채널과 API 계약","만 확장하고 핵심 업무 규칙은 그대로 유지합니다."] }
+  };
+  const architectureMap = document.getElementById("architectureMap");
+  const changeMessage = document.getElementById("changeMessage");
+  document.querySelectorAll("[data-change]").forEach(button => button.addEventListener("click", () => {
+    document.querySelectorAll("[data-change]").forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+    const change = changes[button.dataset.change];
+    architectureMap?.querySelectorAll("[data-module]").forEach(module => module.classList.toggle("affected", change.modules.includes(module.dataset.module)));
+    if (changeMessage) changeMessage.innerHTML = `<b>${change.message[0]}</b>${change.message[1]}`;
+    showToast(`변경 영향: ${change.modules.length}개 경계`);
+  }));
+
+  // Field edition: step through an end-to-end change control loop.
+  const runChange = document.getElementById("runChange");
+  const changeTrace = document.getElementById("changeTrace");
+  let changeTimers = [];
+  runChange?.addEventListener("click", () => {
+    changeTimers.forEach(clearTimeout); changeTimers = [];
+    const steps = [...changeTrace.querySelectorAll("li")];
+    steps.forEach((step,index) => {
+      step.classList.remove("active","done");
+      step.querySelector("small").textContent = "WAITING";
+      changeTimers.push(setTimeout(() => {
+        steps.forEach(item => item.classList.remove("active"));
+        step.classList.add("active");
+        step.querySelector("small").textContent = "RUNNING";
+        if (index > 0) {
+          steps[index - 1].classList.add("done");
+          steps[index - 1].querySelector("small").textContent = "EVIDENCE ✓";
+        }
+        if (index === steps.length - 1) {
+          changeTimers.push(setTimeout(() => {
+            step.classList.remove("active"); step.classList.add("done");
+            step.querySelector("small").textContent = "RELEASE READY ✓";
+            runChange.querySelector("b").textContent = "✓";
+            showToast("변경 영향과 출시 증거가 끝까지 연결되었습니다.");
+          }, 800));
+        }
+      }, index * 850));
+    });
+    runChange.querySelector("b").textContent = "…";
+  });
+
   function moveScene(direction) {
     if (!body.classList.contains("presenter") || !sections.length) return;
     const current = sections.reduce((best, section) => Math.abs(section.getBoundingClientRect().top) < Math.abs(best.getBoundingClientRect().top) ? section : best, sections[0]);
