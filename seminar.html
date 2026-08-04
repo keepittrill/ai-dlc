@@ -17,7 +17,7 @@
       <span class="brand-mark">AI</span><span>AI-NATIVE SE</span>
     </a>
     <nav class="desktop-nav" aria-label="세미나 주요 목차">
-      <a href="#shift">WHY</a><a href="#framework">FRAMEWORK</a><a href="#capability">CAPABILITY</a>
+      <a href="#shift">WHY</a><a href="#framework">FRAMEWORK</a><a href="#aidlc">AI-DLC</a><a href="#capability">CAPABILITY</a>
       <a href="#requirements">REQUIREMENTS</a><a href="#verification">V&amp;V</a><a href="#playbook">PLAYBOOK</a>
     </nav>
     <div class="header-actions">
@@ -32,7 +32,7 @@
   </header>
 
   <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <a href="#shift">WHY</a><a href="#framework">FRAMEWORK</a><a href="#capability">CAPABILITY</a>
+    <a href="#shift">WHY</a><a href="#framework">FRAMEWORK</a><a href="#aidlc">AI-DLC</a><a href="#capability">CAPABILITY</a>
     <a href="#requirements">REQUIREMENTS</a><a href="#verification">V&amp;V</a><a href="#playbook">PLAYBOOK</a>
   </aside>
 
@@ -154,8 +154,80 @@
       </div>
     </section>
 
-    <section class="scene chapter" id="capability" data-scene="04">
-      <div class="section-number">04 / HUMAN CAPABILITY</div>
+    <section class="scene chapter" id="aidlc" data-scene="04">
+      <div class="section-number">04 / INSIDE AI-DLC</div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">A METHODOLOGY YOU INSTALL, NOT READ</p>
+        <h2>AI-DLC는 읽는 방법론이 아니라<br /><em>설치하는 방법론입니다.</em></h2>
+        <p>AWS가 실제로 공개한 것은 책이 아니라 실행 가능한 규칙 파일 묶음(awslabs/aidlc-workflows)입니다. 프로젝트에 복사하고 “Using AI-DLC”로 대화를 시작하는 순간, 에이전트가 절차를 따르기 시작합니다. Agile은 사람이 책을 읽고 행동을 바꿔야 했지만, AI-DLC는 방법론이 처음으로 코드처럼 배포 가능해진 사례입니다.</p>
+      </div>
+
+      <div class="role-boundary reveal">
+        <div><b>❌ AI-Managed</b><p>“통째로 만들어줘” — 에이전트가 멋대로 결정해 일관성이 깨지고 유지보수 폭탄이 됩니다.</p></div>
+        <div><b>❌ AI-Assisted</b><p>“이 함수만 짜줘” — 컨텍스트가 단절되어 생산성 향상이 미미하고, 낡은 비효율을 오히려 강화합니다.</p></div>
+        <div><b>✅ AI-DLC</b><p>전 과정에 AI가 참여하되, 사람이 컨텍스트와 가드레일을 설계합니다. 방법론의 핵심은 이 균형입니다.</p></div>
+      </div>
+      <p class="stage-takeaway reveal"><b>한 문장 요약:</b> 실행은 AI에게 통째로 넘기고, 사람은 결정과 검증만 한다 — 단, 폭주하지 않도록 관문을 세우고, 결정과 맥락을 파일로 남긴다.</p>
+
+      <div class="aidlc-dialog reveal">
+        <div class="window-bar"><span></span><span></span><span></span><b>PLAN · ASK · DEFER — AI-DLC의 심장 패턴</b></div>
+        <ol>
+          <li class="user"><span>나</span><p>Using AI-DLC, 고객 문의 검색 기능을 추가하자.</p></li>
+          <li><span>AI · 계획한다</span><p>요구사항 확인 → 설계 → 구현 → 테스트 순서로 진행하겠습니다.</p></li>
+          <li><span>AI · 질문한다</span><p>먼저 확인이 필요합니다. Q1. 검색 대상은? (A) 제목만 (B) 본문 포함 · Q2. 정렬은? (A) 최신순 (B) 관련도순</p></li>
+          <li class="user"><span>나</span><p>Q1은 B, Q2는 A.</p></li>
+          <li><span>AI · 미룬다</span><p>답변 기반 실행 계획입니다. 승인하시면 구현을 시작합니다 — Continue / Request Changes?<small>이 승인이 있기 전까지 AI는 코드를 한 줄도 작성하지 않습니다. 이 패턴이 SDLC의 모든 활동에서 빠르게 반복됩니다.</small></p></li>
+        </ol>
+      </div>
+
+      <div class="two-paths reveal">
+        <article><span>요청 A · “오타 고쳐줘”</span><h3>5단계, 몇 분 컷</h3><p>Workspace 확인 → 요구 확인(얕게) → 계획 → 코드 생성 → 빌드·테스트. 유저 스토리·설계 단계는 “버그 수정”이라 스킵하되, 스킵 결정조차 사람에게 보고하고 승인받습니다.</p><b>질문 1–2개 + 승인 2번</b></article>
+        <article><span>요청 B · “결제 기능 만들어줘”</span><h3>12단계 풀코스, 하루 이상</h3><p>페르소나·유저 스토리, 신규 컴포넌트 설계, 유닛 분해(결제 요청·승인 콜백·환불), 유닛마다 기능 설계 + NFR(보안·동시성) + 인프라 설계까지 전부 실행합니다.</p><b>질문 수십 개 + 승인 게이트 다수</b></article>
+      </div>
+      <p class="stage-takeaway reveal"><b>적응형 지능:</b> 같은 규칙 파일인데 요청의 위험도에 따라 프로세스가 고무줄처럼 늘고 줄어듭니다. 애매하면 “포함”이 기본값입니다.</p>
+
+      <div class="role-boundary reveal">
+        <div><b>aidlc-state.md</b><p>어디까지 왔는지 기록하는 상태 파일. 세션이 끊겨도 다음 세션이 이 파일을 읽고 이어서 재개합니다.</p></div>
+        <div><b>audit.md</b><p>모든 입력과 결정을 시간순으로만 추가(append-only)하는 감사 로그. “이 코드는 누가 언제 승인했나”에 답합니다.</p></div>
+        <div><b>승인 게이트</b><p>“DO NOT PROCEED until user confirms” — 규칙 원문에 16회 이상 반복되는 문장. 선택지는 Continue / Request Changes 2택뿐입니다.</p></div>
+      </div>
+
+      <div class="test-split reveal">
+        <article><span>기존 문서화</span><h3>나중을 위한 보험</h3><p>독자는 사람 — 미래의 팀원</p><ul><li>목적: 지식 전달 · 감사 대비</li><li>안 하면: 언젠가 곤란해짐 (천천히 아픔)</li><li>그래서 항상 뒤로 미뤄짐</li></ul></article>
+        <article><span>AI-DLC의 파일</span><h3>다음 단계 AI의 연료</h3><p>독자는 AI — 다음 세션의 에이전트</p><ul><li>목적: AI의 작업 기억 — 채팅은 세션이 끝나면 증발</li><li>안 하면: 당장 다음 세션이 바보가 됨 (즉시 아픔)</li><li>요구 파일 없으면 설계를 못 시킴 — 미룰 수 없음</li></ul></article>
+      </div>
+      <p class="stage-takeaway reveal"><b>관점 전환:</b> 문서는 워크플로의 부산물이 아니라 연료입니다. AI-DLC에서 문서화는 목적이 아니라 수단입니다.</p>
+
+      <div class="myth-card reveal">
+        <div><span>QUIZ</span><h3>“AWS가 주장하는 10~15배 생산성 — 그대로 믿어도 될까요?”</h3></div>
+        <button type="button">정답 확인</button>
+        <p data-quiz-answer hidden><strong>절반만 믿으세요.</strong> 실측 사례는 있습니다 — Amazon Bedrock 추론 엔진 재구축은 “엔지니어 40명 × 1년” 견적을 6명이 76일 만에 끝냈습니다. 하지만 자사 도구 홍보 맥락의 자사 사례이고, 측정 기준(코드 줄 수? 기능 수?)도 모호합니다. 숫자는 참고만 하고, 우리 조직의 저위험 파일럿으로 직접 측정하는 것이 정답입니다.</p>
+      </div>
+
+      <div class="case-intro reveal">
+        <div class="case-intro-badge"><span>REAL STORY</span><b>🔍</b></div>
+        <div>
+          <h3>이미 하고 있었습니다 — 어느 팀의 실화</h3>
+          <p>사내의 한 팀이 LLM 기반 테스트 실패 분석 서비스를 자기 방식대로 개발한 뒤, AI-DLC 렌즈로 되돌아봤습니다. 요구사항 명세 → 기능별 설계 문서(FR/NFR/결정 기록) → Phase별 체크박스 TODO → “회귀 0 확인” 게이트 → 운영 피드백의 문서화까지 — <strong>의도하지 않았는데 이미 절반 이상을 실천하고 있었습니다.</strong></p>
+          <p>부족했던 것은 산출물이 아니라 결정적 장치였습니다 — 흩어진 결정 기록의 시간순 일원화(audit), 프로젝트 전역 상태 파일(state), “설계 승인 전 구현 금지”의 명문화(gate). 즉 AI-DLC는 <strong>잘 굴러가는 AI 협업이 자연히 수렴하는 형태를 AWS가 규칙으로 표준화한 것</strong>입니다. 그래서 도입은 갈아엎기가 아니라, 부족한 장치만 골라 설치하는 일입니다. 새 프로젝트라면 첫날부터 통째로 설치하는 쪽이 정답입니다.</p>
+        </div>
+      </div>
+
+      <p class="stage-takeaway reveal"><b>내일부터 바꿀 세 가지:</b> AI-DLC의 조언은 “문서를 더 써라”가 아니라 “질문 먼저, 승인 먼저를 규칙으로 박아라”입니다.</p>
+      <div class="role-boundary reveal">
+        <div><b>① 질문 먼저</b><p>“일단 만들어줘” 대신 “구현 전에 모호한 점을 질문으로 먼저 줘” — 프로젝트 중반에 터지던 “그런 뜻이 아니었는데”를 첫날로 앞당깁니다.</p></div>
+        <div><b>② 승인 먼저</b><p>“계획·설계 승인 전 코드 작성 금지”를 팀 규칙 파일(CLAUDE.md 등)에 명문화합니다. 관문이 없으면 폭주, 실행을 안 맡기면 굼뜸 — 그 사이의 균형점입니다.</p></div>
+        <div><b>③ 파일로 남기기</b><p>질문의 답·설계 결정·진행 상태를 채팅에 흘리지 말고 저장소의 md 파일에 쌓아, 다음 세션이 읽고 이어서 일하게 합니다.</p></div>
+      </div>
+
+      <div class="case-link reveal">
+        <span>📎</span>
+        <p><b>Copilot에 적용하면</b> — “Using AI-DLC, 고객지원 Copilot을 만들자”로 시작하면 에이전트는 코드 대신 다지선다 질문지부터 내놓습니다(지식베이스 범위는? 이관 기준은? 응답시간 목표는?). 그 답이 그대로 requirements.md가 되어 저장소에 남고, 다음 단계의 컨텍스트가 됩니다.</p>
+      </div>
+    </section>
+
+    <section class="scene chapter" id="capability" data-scene="05">
+      <div class="section-number">05 / HUMAN CAPABILITY</div>
       <div class="chapter-head reveal">
         <p class="eyebrow">THE HUMAN CONTROL PLANE</p>
         <h2>개인의 역량은 없어지는 것이 아니라<br /><em>재배치됩니다.</em></h2>
@@ -185,8 +257,8 @@
       </div>
     </section>
 
-    <section class="scene chapter" id="requirements" data-scene="05">
-      <div class="section-number">05 / REQUIREMENTS</div>
+    <section class="scene chapter" id="requirements" data-scene="06">
+      <div class="section-number">06 / REQUIREMENTS</div>
       <div class="chapter-head reveal">
         <p class="eyebrow">PROMPT IS NOT A SPECIFICATION</p>
         <h2>AI에게 말을 잘하는 것보다<br /><em>완료를 정의하는 것.</em></h2>
@@ -243,8 +315,8 @@
       </div>
     </section>
 
-    <section class="scene chapter" id="verification" data-scene="06">
-      <div class="section-number">06 / VERIFICATION &amp; VALIDATION</div>
+    <section class="scene chapter" id="verification" data-scene="07">
+      <div class="section-number">07 / VERIFICATION &amp; VALIDATION</div>
       <div class="chapter-head reveal">
         <p class="eyebrow">EVIDENCE, NOT CONFIDENCE</p>
         <h2>“AI가 테스트했습니다”가 아니라<br /><em>증거가 통과해야 합니다.</em></h2>
@@ -292,8 +364,8 @@
       </div>
     </section>
 
-    <section class="scene chapter" id="case" data-scene="07">
-      <div class="section-number">07 / CASE SIMULATION</div>
+    <section class="scene chapter" id="case" data-scene="08">
+      <div class="section-number">08 / CASE SIMULATION</div>
       <div class="chapter-head reveal">
         <p class="eyebrow">AI CUSTOMER SUPPORT COPILOT</p>
         <h2>하나의 서비스를<br /><em>운영 가능한 시스템으로.</em></h2>
@@ -327,8 +399,8 @@
       </div>
     </section>
 
-    <section class="scene chapter" id="playbook" data-scene="08">
-      <div class="section-number">08 / OPERATING MODEL</div>
+    <section class="scene chapter" id="playbook" data-scene="09">
+      <div class="section-number">09 / OPERATING MODEL</div>
       <div class="chapter-head reveal">
         <p class="eyebrow">HUMAN GATES, MACHINE SPEED</p>
         <h2>AI의 속도를 살리면서<br /><em>사람의 통제권을 유지합니다.</em></h2>
@@ -358,8 +430,8 @@
       </div>
     </section>
 
-    <section class="scene chapter" id="roadmap" data-scene="09">
-      <div class="section-number">09 / 90-DAY ROADMAP</div>
+    <section class="scene chapter" id="roadmap" data-scene="10">
+      <div class="section-number">10 / 90-DAY ROADMAP</div>
       <div class="chapter-head reveal">
         <p class="eyebrow">START SMALL, STANDARDIZE FAST</p>
         <h2>내일부터 시작하는<br /><em>30 · 60 · 90일.</em></h2>
@@ -376,8 +448,8 @@
       </div>
     </section>
 
-    <section class="sources scene" id="sources" data-scene="10">
-      <div class="section-number">10 / SOURCES</div>
+    <section class="sources scene" id="sources" data-scene="11">
+      <div class="section-number">11 / SOURCES</div>
       <div class="chapter-head reveal"><p class="eyebrow">OFFICIAL REFERENCES</p><h2>더 깊이 보기</h2></div>
       <div class="source-grid reveal">
         <a href="https://www.iso.org/standard/90219.html" target="_blank" rel="noreferrer"><span>SDLC</span><b>ISO/IEC/IEEE 12207:2026</b><small>Software life cycle processes ↗</small></a>
@@ -388,6 +460,7 @@
         <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noreferrer"><span>AI RISK</span><b>NIST AI RMF</b><small>Govern · Map · Measure · Manage ↗</small></a>
         <a href="https://www.iso.org/standard/42001" target="_blank" rel="noreferrer"><span>GOVERNANCE</span><b>ISO/IEC 42001:2023</b><small>AI management system ↗</small></a>
         <a href="https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/" target="_blank" rel="noreferrer"><span>EXECUTION</span><b>AWS AI-DLC</b><small>AI-driven development lifecycle ↗</small></a>
+        <a href="https://github.com/awslabs/aidlc-workflows" target="_blank" rel="noreferrer"><span>RULES</span><b>awslabs/aidlc-workflows</b><small>설치 가능한 AI-DLC 규칙 파일 (MIT-0) ↗</small></a>
       </div>
       <footer><span>AI-NATIVE SE</span><p>SE Organization Tech Seminar · Designed for GitHub Pages</p><a href="#top">BACK TO TOP ↑</a></footer>
     </section>
@@ -396,7 +469,7 @@
   <dialog id="agendaDialog">
     <button type="button" class="dialog-close" data-close-dialog aria-label="닫기">×</button>
     <span class="eyebrow">90 MIN AGENDA</span><h2>세미나 구성</h2>
-    <ol><li><b>10분</b> AI 코딩의 전환 — 무엇이 바뀌었나</li><li><b>10분</b> 성숙도 진단과 러닝 케이스 소개</li><li><b>15분</b> AI-DLC와 국제표준</li><li><b>10분</b> 인간 역량의 재배치</li><li><b>15분</b> 요구사항 워크숍</li><li><b>15분</b> V&amp;V와 증거</li><li><b>10분</b> 사례 시뮬레이션 · 실패 탐험</li><li><b>5분</b> 준비도 진단과 90일 로드맵</li></ol>
+    <ol><li><b>10분</b> AI 코딩의 전환 — 무엇이 바뀌었나</li><li><b>10분</b> 성숙도 진단과 러닝 케이스 소개</li><li><b>15분</b> AI-DLC 해부와 국제표준</li><li><b>10분</b> 인간 역량의 재배치</li><li><b>15분</b> 요구사항 워크숍</li><li><b>15분</b> V&amp;V와 증거</li><li><b>10분</b> 사례 시뮬레이션 · 실패 탐험</li><li><b>5분</b> 준비도 진단과 90일 로드맵</li></ol>
   </dialog>
 
   <dialog id="keyboardDialog">
