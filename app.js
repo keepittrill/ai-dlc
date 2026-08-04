@@ -1,13 +1,14 @@
 (() => {
   const body = document.body;
   const themeOrder = ["command", "editorial", "flow"];
+  const fixedDesign = body.classList.contains("field-seminar");
   const params = new URLSearchParams(location.search);
   const requestedTheme = params.get("theme");
-  if (themeOrder.includes(requestedTheme)) body.dataset.theme = requestedTheme;
+  if (!fixedDesign && themeOrder.includes(requestedTheme)) body.dataset.theme = requestedTheme;
 
   const themeButtons = [...document.querySelectorAll("[data-set-theme]")];
   function setTheme(theme, announce = true) {
-    if (!themeOrder.includes(theme)) return;
+    if (fixedDesign || !themeOrder.includes(theme)) return;
     body.dataset.theme = theme;
     themeButtons.forEach(button => button.classList.toggle("active", button.dataset.setTheme === theme));
     try { localStorage.setItem("ai-native-theme", theme); } catch (_) {}
