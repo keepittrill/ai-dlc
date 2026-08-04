@@ -5,7 +5,7 @@ GitHub Pages에 바로 배포할 수 있는 순수 HTML/CSS/JavaScript 세미나
 ## 구성
 
 - `index.html` — 기존 버전과 Field Edition 선택 화면
-- `seminar.html` — AI-DLC·국제표준·요구사항·V&V 세미나. "고객지원 Copilot" 러닝 케이스가 전체 이론 장을 관통하며(📎 표시), 실패 시나리오 탐험기·O/X 퀴즈 포함
+- `seminar.html` — 실사례 3개(Amazon Bedrock 76일 · 사내 팀 실화 · 고객지원 Copilot 핸즈온)가 뼈대인 설득형 세미나. AI-DLC 해부, 실패 시나리오 탐험기, O/X 퀴즈, 준비도 진단 포함
 - `seminar-field.html` — 이론 → Living Spec.md → Evolvable Design → System-Level Validation → End-to-End Control 확장판
 - `styles.css` — 세 가지 테마와 반응형 스타일
 - `app.js` — 테마 전환, 슬라이드 모드, 요구사항 빌더, 준비도 진단, 실패 시나리오 탐험, 변경 영향 시뮬레이션
