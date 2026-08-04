@@ -758,3 +758,35 @@ body.presenter .section-number { top:24px; }
   .event-alert { padding:32px 22px; }.change-event ol { padding:22px 14px; }.change-event li { grid-template-columns:34px 1fr; }.change-event li small { grid-column:2; }
   .final-sequence { flex-direction:column; text-align:center; line-height:1.5; }.final-sequence i { transform:none; }.final-lockup h2 { flex-direction:column; }.final-lockup h2 i { transform:rotate(90deg); }
 }
+
+/* ---------- Running case & scenario explorer (original seminar) ---------- */
+.case-intro { display:grid; grid-template-columns:auto 1fr; gap:28px; align-items:start; margin-top:36px; padding:32px 36px; border:1px solid var(--line); border-left:5px solid var(--accent); background:var(--surface); box-shadow:var(--shadow); }
+.case-intro-badge { display:grid; justify-items:center; gap:12px; padding-top:4px; }
+.case-intro-badge span { color:var(--accent); font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; }
+.case-intro-badge b { font-size:42px; line-height:1; }
+.case-intro h3 { margin:0 0 12px; font-size:24px; }
+.case-intro p { margin:0 0 12px; color:var(--muted); font-size:16px; line-height:1.75; }
+.case-intro p:last-child { margin-bottom:0; }
+.case-intro p strong { color:var(--accent); }
+
+.case-link { display:flex; gap:16px; align-items:flex-start; margin-top:26px; padding:20px 24px; border:1px dashed var(--accent); background:var(--surface); }
+.case-link > span { font-size:22px; line-height:1.2; }
+.case-link p { margin:0; color:var(--muted); font-size:15px; line-height:1.75; }
+.case-link p b { color:var(--accent); }
+
+.failure-detail { margin-top:22px; padding:24px; border:1px solid var(--line); background:var(--surface); }
+.failure-detail > b { display:block; margin-bottom:16px; font-size:18px; }
+.failure-detail .f-empty { margin:0; color:var(--muted); font-size:15px; }
+.failure-detail .f-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.failure-detail .f-grid div { padding:16px 18px; border:1px solid var(--line); }
+.failure-detail .f-grid span { display:block; margin-bottom:9px; color:var(--accent-2); font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; }
+.failure-detail .f-grid p { margin:0; color:var(--muted); font-size:14px; line-height:1.7; }
+
+.quality-checks > div span { display:grid; gap:4px; }
+.quality-checks > div span small { color:var(--muted); font-size:11px; font-weight:400; }
+
+@media (max-width:760px) {
+  .case-intro { grid-template-columns:1fr; padding:26px 20px; }
+  .case-link { flex-direction:column; gap:10px; }
+  .failure-detail .f-grid { grid-template-columns:1fr; }
+}
