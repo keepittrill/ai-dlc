@@ -55,6 +55,19 @@
     sections.forEach(section => sectionObserver.observe(section));
   }
 
+  const scenes = [...document.querySelectorAll("main .scene")];
+  const slideCounter = document.createElement("div");
+  slideCounter.className = "slide-counter";
+  if (scenes.length) document.body.appendChild(slideCounter);
+  function nearestScene() {
+    return scenes.reduce((best, scene) => Math.abs(scene.getBoundingClientRect().top) < Math.abs(best.getBoundingClientRect().top) ? scene : best, scenes[0]);
+  }
+  function updateSlideCounter() {
+    if (!scenes.length || !body.classList.contains("presenter")) return;
+    slideCounter.textContent = `${String(scenes.indexOf(nearestScene()) + 1).padStart(2, "0")} / ${String(scenes.length).padStart(2, "0")}`;
+  }
+  addEventListener("scroll", updateSlideCounter, { passive: true });
+
   const menuButton = document.getElementById("menuButton");
   const mobileMenu = document.getElementById("mobileMenu");
   menuButton?.addEventListener("click", () => {
@@ -77,7 +90,13 @@
   function togglePresenter() {
     body.classList.toggle("presenter");
     presentButton?.classList.toggle("active", body.classList.contains("presenter"));
-    showToast(body.classList.contains("presenter") ? "발표 집중 모드 ON" : "발표 집중 모드 OFF");
+    if (body.classList.contains("presenter")) {
+      nearestScene()?.scrollIntoView();
+      updateSlideCounter();
+      showToast("슬라이드 모드 ON · 방향키로 이동");
+    } else {
+      showToast("슬라이드 모드 OFF");
+    }
   }
   presentButton?.addEventListener("click", togglePresenter);
 
@@ -285,10 +304,9 @@
   });
 
   function moveScene(direction) {
-    if (!body.classList.contains("presenter") || !sections.length) return;
-    const current = sections.reduce((best, section) => Math.abs(section.getBoundingClientRect().top) < Math.abs(best.getBoundingClientRect().top) ? section : best, sections[0]);
-    const index = sections.indexOf(current);
-    sections[Math.min(sections.length - 1, Math.max(0, index + direction))]?.scrollIntoView({ behavior: "smooth" });
+    if (!body.classList.contains("presenter") || !scenes.length) return;
+    const index = scenes.indexOf(nearestScene());
+    scenes[Math.min(scenes.length - 1, Math.max(0, index + direction))]?.scrollIntoView({ behavior: "smooth" });
   }
 
   addEventListener("keydown", event => {

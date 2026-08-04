@@ -431,9 +431,20 @@ kbd { display:grid; place-items:center; min-height:36px; border:1px solid var(--
 
 body.presenter .site-header { transform:translateY(-100%); }
 body.presenter .help-button { opacity:0; pointer-events:none; }
-body.presenter main { scroll-snap-type:y mandatory; }
-body.presenter .scene { scroll-snap-align:start; min-height:100vh; }
+html:has(body.presenter) { scroll-snap-type:y mandatory; }
+body.presenter .scene { scroll-snap-align:start; scroll-snap-stop:always; min-height:100vh; padding:85px 24px 45px; }
 body.presenter .section-number { top:24px; }
+body.presenter .chapter-head { margin-bottom:26px; }
+body.presenter .chapter-head h2 { font-size:clamp(24px,3.2vw,42px); }
+body.presenter .two-paths { margin-top:30px; }
+body.presenter .impact-quote { margin:40px auto 0; font-size:clamp(20px,2.6vw,34px); }
+body.presenter .control-manifesto { margin-top:45px; }
+body.presenter .theory-stage .pillar-kicker { margin:36px 0 20px; }
+body.presenter .case-intro,body.presenter .case-link { margin-top:20px; }
+body.presenter .theory-stage .case-link { margin-top:28px; }
+
+.slide-counter { position:fixed; right:18px; bottom:16px; z-index:80; display:none; padding:8px 13px; border:1px solid var(--line); background:var(--surface-strong); color:var(--muted); font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; }
+body.presenter .slide-counter { display:block; }
 
 @media (max-width:1100px) {
   .desktop-nav { display:none; }
