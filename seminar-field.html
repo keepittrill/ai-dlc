@@ -223,14 +223,13 @@
         <article class="resilience"><span>06</span><h3>AI EVAL / RESILIENCE</h3><p>환각·장애·복구</p><small>운영 신뢰</small></article>
       </div>
 
-      <div class="validation-balance reveal">
-        <div class="balance-copy"><span>THE TESTING SHIFT</span><h3>테스트 개수보다<br />위험을 얼마나 덮는지가 중요합니다.</h3></div>
-        <div class="confidence-bars">
-          <div><span>로컬 코드 신뢰</span><i style="--value:32%"></i><b>UT</b></div>
-          <div><span>연결 신뢰</span><i style="--value:66%"></i><b>INTEGRATION</b></div>
-          <div><span>출시 신뢰</span><i style="--value:92%"></i><b>STAGE · E2E · PERF</b></div>
-        </div>
+      <div class="pillar-kicker reveal"><span>THE SHIFT</span><i></i><b>테스트 개수가 아니라 “어떤 위험을 덮는가”가 기준</b></div>
+      <div class="design-rules reveal">
+        <article><span>UNIT</span><h3>계산이 맞는가</h3><p>함수와 모듈의 논리를 초 단위로 확인합니다. <b>덮지 못하는 것</b> — 어떤 데이터가 조회되는지, 응답이 어떻게 직렬화되는지, 캐시가 언제 갱신되는지.</p></article>
+        <article><span>CONTRACT · INTEGRATION</span><h3>연결이 유지되는가</h3><p>기존 클라이언트와의 약속, 실제 DB·외부 API와의 상호작용을 확인합니다. <b>덮지 못하는 것</b> — 실사용 부하, 의존성 장애, 모델 품질 변화.</p></article>
+        <article><span>STAGE · PERF · RESILIENCE</span><h3>운영에서 버티는가</h3><p>실사용자 여정, 부하, 장애 주입, AI 평가를 운영과 같은 환경에서 확인합니다. <b>출시 결정의 근거는 여기서 나옵니다.</b></p></article>
       </div>
+      <p class="stage-takeaway reveal"><b>층마다 덮는 위험이 다릅니다.</b> 아래층을 많이 쌓아도 위층의 위험은 줄지 않습니다 — 커버리지 숫자가 아니라 <b>덮지 못한 위험이 무엇인지</b>가 출시 회의의 안건이어야 합니다.</p>
 
       <div class="release-gate reveal">
         <span>RELEASE GATE</span>
