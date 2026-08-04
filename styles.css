@@ -785,6 +785,14 @@ body.presenter .section-number { top:24px; }
 .quality-checks > div span { display:grid; gap:4px; }
 .quality-checks > div span small { color:var(--muted); font-size:11px; font-weight:400; }
 
+/* ---------- Landing page: choice labels ---------- */
+.selector-label { display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 16px; margin:58px 0 18px; }
+.selector-label:first-of-type { margin-top:0; }
+.selector-label b { color:var(--accent); font-family:var(--font-mono); font-size:11px; letter-spacing:.16em; white-space:nowrap; }
+.selector-label p { margin:0; color:var(--muted); font-size:13px; }
+.selector-label::after { content:""; flex:1; align-self:center; height:1px; background:var(--line); }
+.selector-label + .field-edition-card { margin-top:0; }
+
 @media (max-width:760px) {
   .case-intro { grid-template-columns:1fr; padding:26px 20px; }
   .case-link { flex-direction:column; gap:10px; }
