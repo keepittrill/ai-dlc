@@ -793,6 +793,12 @@ body.presenter .section-number { top:24px; }
 .selector-label::after { content:""; flex:1; align-self:center; height:1px; background:var(--line); }
 .selector-label + .field-edition-card { margin-top:0; }
 
+/* ---------- Field edition: expanded theory part ---------- */
+.theory-stage .pillar-kicker { margin:80px 0 28px; }
+.theory-stage .two-paths,.theory-stage .spec-loop,.theory-stage .design-rules,.theory-stage .theory-equation { margin-top:0; }
+.theory-stage .case-link { margin-top:60px; }
+.case-link a { color:var(--accent); }
+
 @media (max-width:760px) {
   .case-intro { grid-template-columns:1fr; padding:26px 20px; }
   .case-link { flex-direction:column; gap:10px; }

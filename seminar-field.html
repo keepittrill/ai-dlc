@@ -73,12 +73,46 @@
         <article><span>04</span><b>OWNERSHIP</b><h3>결정은 다시 사람에게 돌아온다</h3><p>AI의 출력 속도가 빨라질수록 변경 영향·위험·출시 여부를 판단하는 책임이 커집니다.</p></article>
       </div>
 
+      <div class="pillar-kicker reveal"><span>THEORY 01</span><i></i><b>성숙도 지도 — 우리는 지금 어디에 있는가</b></div>
+      <div class="maturity-track reveal" role="list">
+        <article role="listitem"><span>01</span><h3>Vibe Coding</h3><p>“일단 만들어줘”</p><small>개인 실험 · 근거 부족</small></article>
+        <article role="listitem"><span>02</span><h3>AI-Assisted</h3><p>부분 코드 보조</p><small>생산성 도구</small></article>
+        <article role="listitem"><span>03</span><h3>Spec-Driven</h3><p>명세가 기준</p><small>인수 기준 · 추적성</small></article>
+        <article role="listitem"><span>04</span><h3>AI-DLC</h3><p>전 과정 AI 협업</p><small>사람의 승인 게이트</small></article>
+        <article role="listitem"><span>05</span><h3>Standardized</h3><p>조직 운영체계</p><small>표준 · 증거 · 개선</small></article>
+      </div>
+      <p class="stage-takeaway reveal"><b>목표:</b> 좋은 프롬프트 한 번(1단계)이 아니라, 누구나 반복할 수 있는 운영체계(5단계)로 가는 것.</p>
+
+      <div class="pillar-kicker reveal"><span>THEORY 02</span><i></i><b>AI-DLC — 사람과 AI의 역할 분담</b></div>
+      <div class="spec-loop reveal">
+        <article><span>01 · HUMAN</span><b>사람이 정의한다</b><p>문제·경계·인수 기준을 승인</p></article><i>→</i>
+        <article><span>02 · AI</span><b>AI가 실행한다</b><p>계획·코드·테스트 초안 생성</p></article><i>→</i>
+        <article><span>03 · GATE</span><b>증거로 통과시킨다</b><p>리뷰·검증·보안 게이트</p></article><i>→</i>
+        <article><span>04 · TOGETHER</span><b>함께 운영한다</b><p>관찰·롤백·지속 개선</p></article>
+      </div>
+
+      <div class="pillar-kicker reveal"><span>THEORY 03</span><i></i><b>표준 지도 — 빠뜨린 것을 찾아주는 체크리스트</b></div>
+      <div class="two-paths reveal">
+        <article><span>PATH A</span><h3>AI로 일반 SW를 개발</h3><p>AI는 개발 도구이고 서비스 자체는 결정론적 SW입니다. 생명주기(12207)·요구사항(29148)·품질(25010)·테스트(29119)·보안(SSDF)이 기본 세트입니다.</p><b>12207 + 29148 + 25010 + 29119 + SSDF</b></article>
+        <article><span>PATH B</span><h3>AI가 들어간 서비스를 개발</h3><p>완성된 서비스가 LLM·추천·예측을 사용합니다. PATH A 위에 AI 생명주기(5338)·AI 위험(AI RMF)·거버넌스(42001)를 더합니다.</p><b>PATH A + 5338 + AI RMF + 42001</b></article>
+      </div>
+
+      <div class="pillar-kicker reveal"><span>THEORY 04</span><i></i><b>V&amp;V — 만든 것과 필요한 것을 모두 확인</b></div>
+      <div class="design-rules reveal">
+        <article><span>V1 · VERIFICATION</span><h3>명세대로 만들었는가</h3><p>레시피대로 요리했는지 확인합니다. 승인된 요구사항이 코드·설정·테스트에 빠짐없이 반영됐는지 검사합니다.</p></article>
+        <article><span>V2 · VALIDATION</span><h3>필요한 것을 만들었는가</h3><p>손님이 맛있다고 하는지 확인합니다. 실제 사용자와 현장에서 정말 가치를 내는지 검사합니다.</p></article>
+        <article><span>E · EVIDENCE</span><h3>둘 다 증거로 판정한다</h3><p>“AI가 잘 되던데요”는 주장입니다. 테스트 결과·로그·승인 기록 같은 재현 가능한 증거가 통과를 결정합니다.</p></article>
+      </div>
+
+      <div class="pillar-kicker reveal"><span>SUMMARY</span><i></i><b>한 줄 공식으로 정리</b></div>
       <div class="theory-equation reveal" aria-label="AI 네이티브 엔지니어링 공식">
         <div><span>AI EXECUTION</span><b>속도</b></div><i>×</i>
         <div><span>HUMAN JUDGMENT</span><b>방향</b></div><i>×</i>
         <div><span>VERIFIABLE EVIDENCE</span><b>신뢰</b></div><i>=</i>
         <div class="result"><span>ENGINEERED SYSTEM</span><b>운영 가능한 서비스</b></div>
       </div>
+
+      <div class="case-link reveal"><span>📚</span><p><b>더 깊이 보고 싶다면</b> — 이 파트는 이론의 20분 요약본입니다. 역량 재배치, 요구사항 8가지 조건, 검증 파이프라인 7단계, 러닝 케이스 전체가 담긴 <a href="seminar.html?theme=flow">ORIGINAL 90분 버전</a>에서 이론 전체를 볼 수 있습니다.</p></div>
     </section>
 
     <section class="impact-break scene" data-scene="02">
@@ -268,7 +302,7 @@
   <dialog id="fieldAgendaDialog">
     <button type="button" class="dialog-close" data-close-dialog aria-label="닫기">×</button>
     <span class="eyebrow">THEORY → FIELD · 100 MIN</span><h2>확장판 아젠다</h2>
-    <ol><li><b>20분</b> AI-DLC·표준·V&amp;V 이론</li><li><b>15분</b> Living Spec.md</li><li><b>15분</b> 변화에 강한 설계</li><li><b>20분</b> 시스템 수준 검증</li><li><b>20분</b> End-to-End 통제 역량</li><li><b>10분</b> 변경 이벤트 실습</li></ol>
+    <ol><li><b>20분</b> 이론 기초 — 성숙도·AI-DLC·표준·V&amp;V</li><li><b>15분</b> Living Spec.md</li><li><b>15분</b> 변화에 강한 설계</li><li><b>20분</b> 시스템 수준 검증</li><li><b>20분</b> End-to-End 통제 역량</li><li><b>10분</b> 변경 이벤트 실습</li></ol>
   </dialog>
   <dialog id="keyboardDialog">
     <button type="button" class="dialog-close" data-close-dialog aria-label="닫기">×</button>
