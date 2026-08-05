@@ -33,7 +33,9 @@ AI-Native SE 세미나 사이트의 구조와 “오래 유지보수 가능하�
 
 `styles.css`의 `[data-theme="…"]` 변수 블록만 추가하면 전 컴포넌트에 자동 적용된다.
 `command`(다크 콘솔) · `editorial`(스위스 라이트) · `flow`(인디고, 기본) · `paper`(문서 라이트) · `blueprint`(설계도면 라이트).
-새 테마 추가법: (1) 변수 블록 추가, (2) 라이트/다크면 `::before` 격자색·`.ambient` opacity 보정, (3) `app.js`의 `themeOrder`·토스트 맵에 키 추가, (4) 세미나 헤더 스위처 버튼·허브 갤러리 프리뷰 추가. 세미나를 특정 디자인에 고정하려면 `<body class="…-seminar">`로 잠근다(app.js의 `fixedDesign`).
+새 테마 추가법: (1) 변수 블록 추가, (2) 라이트/다크면 `::before` 격자색·`.ambient` opacity 보정, (3) `app.js`의 `themeOrder`·토스트 맵에 키 추가, (4) 세미나 헤더 스위처 버튼·허브 테마 스트립 추가.
+
+**테마 선택/고정(세미나별):** 각 세미나는 `<body data-theme="…">`로 기본 테마를 정한다. 특정 디자인에 잠그려면 `<body … data-lock-theme>` 속성만 추가하면 된다 — `app.js`의 `fixedDesign`이 이 속성(또는 `field-seminar`/`dev-seminar` 클래스)을 인식해 스위처·`T`·URL 테마를 모두 무시한다. **코드 수정 없이 마크업만으로** 고정된다.
 
 ## 인터랙티브 위젯 (데이터는 페이지에)
 

@@ -1,7 +1,7 @@
 (() => {
   const body = document.body;
   const themeOrder = ["command", "editorial", "flow", "paper", "blueprint"];
-  const fixedDesign = body.classList.contains("field-seminar") || body.classList.contains("dev-seminar");
+  const fixedDesign = body.classList.contains("field-seminar") || body.classList.contains("dev-seminar") || body.hasAttribute("data-lock-theme");
   const params = new URLSearchParams(location.search);
   const requestedTheme = params.get("theme");
   if (!fixedDesign && themeOrder.includes(requestedTheme)) body.dataset.theme = requestedTheme;

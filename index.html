@@ -16,124 +16,48 @@
 
   <main class="selector-main">
     <section class="selector-intro">
-      <p class="eyebrow">DEVELOPER + FIELD + ORIGINAL</p>
-      <h1>이론으로 이해하고,<br /><em>실무로 통제하세요.</em></h1>
-      <p>세 가지 구성이 있습니다. Developer Edition은 실제 코드와 릴리스 증거로, Field Edition은 명세부터 통제까지의 흐름으로, Original은 이론과 표준으로 접근합니다.</p>
+      <p class="eyebrow">SEMINAR LIBRARY</p>
+      <h1>세미나를 고르세요.</h1>
+      <p>같은 디자인 시스템 위에서 만든 기술 세미나 모음입니다. 각 세미나는 5종 테마와 슬라이드 모드를 지원합니다.</p>
     </section>
 
-    <div class="selector-label"><b>CHOICE 01 · DEVELOPER EDITION</b><p>이론 15% + 실제 코드 60% + 검증 증거 20% — 전문 개발자 대상</p></div>
-    <section class="field-edition-card dev-pick" aria-label="개발자 실무 버전">
-      <a href="seminar-dev.html">
-        <div class="field-card-copy">
-          <span>NEW · ONE CHANGE, FULL STACK</span>
-          <h2>변경 요청 하나를<br /><em>코드와 증거로 끝냅니다.</em></h2>
-          <p>Brownfield 환불정책 변경 · 실제 diff · DB 마이그레이션 · 계약 테스트 · k6 · 장애 주입 · 조건부 GO</p>
-          <b>개발자 실무판 시작 <i>→</i></b>
-        </div>
-        <div class="field-card-visual dev-visual" aria-hidden="true">
-          <span>DIFF</span><span>MIGRATION</span><span>CONTRACT</span>
-          <strong>EVIDENCE</strong>
-        </div>
+    <nav class="seminar-menu" aria-label="세미나 목록">
+      <a class="seminar-card" href="seminar-dev.html">
+        <span>DEVELOPER · 실무 코드</span>
+        <h2>변경 요청 하나를 코드와 증거로 끝냅니다</h2>
+        <p>Brownfield 환불정책 · 실제 diff · DB 마이그레이션 · 계약 테스트 · k6 · 조건부 GO · 전문 개발자 대상</p>
+        <b>시작 →</b>
       </a>
-    </section>
-
-    <div class="selector-label"><b>CHOICE 02 · FIELD EDITION</b><p>이론 20분 + 실무 통제 80분 — 확장판</p></div>
-    <section class="field-edition-card" aria-label="현장 확장 버전">
-      <a href="seminar-field.html">
-        <div class="field-card-copy">
-          <span>NEW · THEORY → FIELD</span>
-          <h2>AI가 더 많이 만들수록,<br /><em>누군가는 전체를 봐야 한다.</em></h2>
-          <p>Living Spec.md · Evolvable Design · System-Level Validation · End-to-End Control</p>
-          <b>가장 임팩트 있는 확장판 시작 <i>→</i></b>
-        </div>
-        <div class="field-card-visual" aria-hidden="true">
-          <i></i><i></i><i></i>
-          <span>SPEC</span><span>DESIGN</span><span>VALIDATE</span>
-          <strong>CONTROL</strong>
-        </div>
+      <a class="seminar-card" href="seminar-field.html">
+        <span>FIELD · 이론 → 통제</span>
+        <h2>AI가 더 많이 만들수록, 누군가는 전체를 봐야 한다</h2>
+        <p>Living Spec · Evolvable Design · System-Level Validation · End-to-End Control · 100분 확장판</p>
+        <b>시작 →</b>
       </a>
-    </section>
-
-    <div class="selector-label"><b>CHOICE 03 · ORIGINAL</b><p>이론을 차근차근 다지는 기존 세미나 — 내용은 같고 디자인만 5종 중 선택</p></div>
-    <section class="theme-gallery" aria-label="기존 세미나 디자인 선택">
-      <a class="theme-preview preview-command" href="seminar.html?theme=command">
-        <div class="preview-top"><span>01</span><span>COMMAND CENTER</span></div>
-        <div class="mini-command">
-          <span class="mini-label">AI-NATIVE SE</span>
-          <strong>DEFINE<br />BUILD<br />VERIFY</strong>
-          <i></i><i></i><i></i>
-        </div>
-        <div class="preview-copy">
-          <h2>Signal Command Center</h2>
-          <p>다크 콘솔 · Cyan/Lime · 개발 생명주기</p>
-          <span>이 스타일로 시작 <b>→</b></span>
-        </div>
+      <a class="seminar-card" href="seminar.html">
+        <span>ORIGINAL · 이론 · 표준</span>
+        <h2>실사례 3개로 배우는 AI-Native Engineering</h2>
+        <p>Amazon 76일 · 사내 실화 · 고객지원 Copilot 핸즈온 · AI-DLC · 국제표준 · 90분</p>
+        <b>시작 →</b>
       </a>
-
-      <a class="theme-preview preview-editorial" href="seminar.html?theme=editorial">
-        <div class="preview-top"><span>02</span><span>SWISS EDITORIAL</span></div>
-        <div class="mini-editorial">
-          <span>CODING ↓</span><span>JUDGMENT ↑</span><span>EVIDENCE ↑</span>
-        </div>
-        <div class="preview-copy">
-          <h2>Swiss Grid Editorial</h2>
-          <p>Ivory · Cobalt/Red · 높은 가독성</p>
-          <span>이 스타일로 시작 <b>→</b></span>
-        </div>
+      <!-- SEMINARS:START — seminar-builder 스킬이 새 세미나 카드를 이 영역에 추가합니다 -->
+      <a class="seminar-card" href="seminar-harness.html">
+        <span>HARNESS · 에이전트 환경 설계</span>
+        <h2>Harness Engineering — 에이전트의 일할 환경을 설계하다</h2>
+        <p>프롬프트 → 컨텍스트 → 하네스 · 7대 장치 · 결정적 가드레일 vs 확률적 가이드 · 60분</p>
+        <b>시작 →</b>
       </a>
+      <!-- SEMINARS:END -->
+    </nav>
 
-      <a class="theme-preview preview-flow" href="seminar.html?theme=flow">
-        <div class="preview-top"><span>03</span><span>EVIDENCE FLOW</span></div>
-        <div class="mini-flow">
-          <span class="node human">H</span><span class="node ai">AI</span><span class="node evidence">E</span>
-          <i class="line line-a"></i><i class="line line-b"></i><i class="line line-c"></i>
-        </div>
-        <div class="preview-copy">
-          <h2>Immersive Evidence Flow</h2>
-          <p>Indigo · Coral/Mint · 몰입형 시스템 맵</p>
-          <span>이 스타일로 시작 <b>→</b></span>
-        </div>
-      </a>
-
-      <a class="theme-preview preview-paper" href="seminar.html?theme=paper">
-        <div class="preview-top"><span>04</span><span>DOCS LIGHT</span></div>
-        <div class="mini-paper">
-          <b></b><i></i><i></i><span>SPEC</span><span>TEST</span>
-        </div>
-        <div class="preview-copy">
-          <h2>Docs Light</h2>
-          <p>White · Blue/Emerald · 밝은 컨퍼런스 문서</p>
-          <span>이 스타일로 시작 <b>→</b></span>
-        </div>
-      </a>
-
-      <a class="theme-preview preview-blueprint" href="seminar.html?theme=blueprint">
-        <div class="preview-top"><span>05</span><span>BLUEPRINT</span></div>
-        <div class="mini-blueprint">
-          <i></i><i></i><i></i><i></i><strong>SYSTEM</strong>
-        </div>
-        <div class="preview-copy">
-          <h2>Engineering Blueprint</h2>
-          <p>Navy grid · Blue/Orange · 설계도면</p>
-          <span>이 스타일로 시작 <b>→</b></span>
-        </div>
-      </a>
-    </section>
-
-    <!-- SEMINARS:START — seminar-builder 스킬이 새 세미나 카드를 이 영역에 추가합니다 -->
-    <div class="selector-label"><b>CHOICE 04 · HARNESS ENGINEERING</b><p>에이전트가 신뢰성 있게 일하는 환경 설계 — AI-DLC의 짝꿍 토픽</p></div>
-    <a class="seminar-card" href="seminar-harness.html">
-      <span>SERIES · TOOLS·EVALS·MEMORY·MCP·PERMISSIONS·OBSERVABILITY·ORCHESTRATION</span>
-      <h2>Harness Engineering — 에이전트의 일할 환경을 설계하다</h2>
-      <p>프롬프트 → 컨텍스트 → 하네스. 7대 장치와 “결정적 가드레일 vs 확률적 가이드” · 60분 · 개발/플랫폼 엔지니어</p>
-      <b>시작 →</b>
-    </a>
-    <!-- SEMINARS:END -->
-
-    <section class="selector-footnote">
-      <span>세 가지 구성</span>
-      <p>Developer: 사고 → 역질문 → diff → 검증 → 릴리스 증거 / Field: 이론 → 명세 → 설계 → 시스템 검증 → 통제 / Original: AI-DLC · 국제표준 · 요구사항 · V&amp;V</p>
-    </section>
+    <div class="theme-strip" aria-label="테마 미리보기">
+      <span>테마 5종 · 세미나 안에서 T로 전환</span>
+      <a href="seminar.html?theme=command">01 Command</a>
+      <a href="seminar.html?theme=editorial">02 Editorial</a>
+      <a href="seminar.html?theme=flow">03 Flow</a>
+      <a href="seminar.html?theme=paper">04 Docs Light</a>
+      <a href="seminar.html?theme=blueprint">05 Blueprint</a>
+    </div>
   </main>
   <script src="app.js"></script>
 </body>

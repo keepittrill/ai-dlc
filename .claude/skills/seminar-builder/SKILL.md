@@ -56,17 +56,23 @@ description: >-
 1. `references/page-template.html`을 읽어 `seminar-<slug>.html`로 만든다. 플레이스홀더 치환:
    - `{{TITLE}}`, `{{DESC}}`, `{{NAV_LINKS}}`(`<a href="#id">LABEL</a>` 반복, 데스크톱·모바일 동일), `{{AGENDA_ITEMS}}`(`<li><b>10분</b> …</li>`), `{{SECTIONS}}`(본문 장면들)
 2. 본문은 `references/components.md`의 컴포넌트만 사용해 조립. 상호작용은 **정적 컴포넌트 + 자동 배선 myth-card** 우선, 탭/탐험기가 필요할 때만 `detail-group`(인라인 JSON) 사용.
-3. 고정 디자인 세미나로 만들려면 `<body>`에 `dev-seminar`(또는 유사) 클래스를 추가해 테마를 잠근다. 아니면 5테마 전환 유지.
+3. **테마 선택.** `<body data-theme="…">`로 기본 테마를 주제에 맞게 지정한다 — SW·엔지니어링이면 `blueprint`, 밝은 문서형이면 `paper`, 몰입형이면 `flow`, 다크 콘솔이면 `command`, 고가독 편집형이면 `editorial`. 기본적으로 5테마 전환(스위처 + `T`)은 그대로 유지한다.
+4. **테마 고정(선택).** 특정 디자인에 잠그려면 `<body>`에 `data-lock-theme` 속성만 추가한다(app.js의 `fixedDesign`가 인식 — 코드 수정 불필요). 그러면 스위처·`T`·URL 테마가 모두 무시되고 지정 테마로 고정된다.
 
 ## 5. 허브 등록
 
-`index.html`의 세미나 목록 마크 영역 안에 카드를 추가한다:
+`index.html`의 `<nav class="seminar-menu">` 안, `<!-- SEMINARS:START/END -->` 마크 영역에 **컴팩트 메뉴 행** 하나를 추가한다(별도 라벨·큰 카드 금지 — 모든 세미나가 동일한 행 포맷):
 ```html
 <!-- SEMINARS:START -->
-<a class="seminar-card" href="seminar-<slug>.html"><span>SERIES · TAG</span><h2>제목</h2><p>한 줄 설명 · 분량 · 대상</p><b>시작 →</b></a>
+<a class="seminar-card" href="seminar-<slug>.html">
+  <span>TAG · 한 단어 분류</span>
+  <h2>세미나 제목</h2>
+  <p>한 줄 설명 · 핵심 키워드 · 분량 · 대상</p>
+  <b>시작 →</b>
+</a>
 <!-- SEMINARS:END -->
 ```
-마크 영역이 없으면 기존 selector 구조에 맞춰 `selector-label` + `seminar-card`로 추가한다.
+`<span>`(모노 태그)/`<h2>`(제목)/`<p>`(한 줄)/`<b>`(화살표) 4개 직계 자식 구조를 지킨다. 허브는 “제목 위주” 메뉴이므로 카드 안에 큰 비주얼을 넣지 않는다.
 
 ## 6. 검증 (필수)
 
