@@ -137,16 +137,16 @@
         <h2>요구사항은 완료되는 문서가 아니라<br /><em>계속 진화하는 기준입니다.</em></h2>
       </div>
 
-      <div class="spec-workbench reveal">
+      <div class="spec-workbench reveal detail-group" data-detail-group="specfiles" data-detail-target="specDocument">
         <div class="repo-tree">
           <div class="terminal-bar"><i></i><i></i><i></i><span>repository / docs</span></div>
-          <button class="active" type="button" data-spec-file="product"><span>◆</span> product-requirements.md</button>
-          <button type="button" data-spec-file="acceptance"><span>◇</span> acceptance-criteria.md</button>
-          <button type="button" data-spec-file="architecture"><span>◇</span> architecture.md</button>
-          <button type="button" data-spec-file="nonfunctional"><span>◇</span> non-functional.md</button>
-          <button type="button" data-spec-file="decision"><span>◇</span> decisions/ADR-004.md</button>
+          <button class="active" type="button" data-detail="product"><span>◆</span> product-requirements.md</button>
+          <button type="button" data-detail="acceptance"><span>◇</span> acceptance-criteria.md</button>
+          <button type="button" data-detail="architecture"><span>◇</span> architecture.md</button>
+          <button type="button" data-detail="nonfunctional"><span>◇</span> non-functional.md</button>
+          <button type="button" data-detail="decision"><span>◇</span> decisions/ADR-004.md</button>
         </div>
-        <article class="md-document" id="specDocument">
+        <article class="md-document" id="specDocument" data-detail-target>
           <div><span>product-requirements.md</span><b>LIVE</b></div>
           <pre><code><em># 고객지원 Copilot</em>
 
@@ -163,6 +163,15 @@
 - P95 응답시간 ≤ 3초</code></pre>
         </article>
       </div>
+      <script type="application/json" data-detail-json="specfiles">
+      {
+        "product": {"name":"product-requirements.md","toast":"product-requirements.md · 실행 기준 확인","code":"<em># 고객지원 Copilot</em>\n\n<strong>## Outcome</strong>\n반복 문의 응답시간 30% 단축\n\n<strong>## Boundary</strong>\n- 승인된 지식만 사용\n- 결제·환불 판단은 사람에게 이관\n\n<strong>## Acceptance</strong>\n- 근거 표시율 ≥ 98%\n- 고위험 오답률 &lt; 1%\n- P95 응답시간 ≤ 3초"},
+        "acceptance": {"name":"acceptance-criteria.md","toast":"acceptance-criteria.md · 실행 기준 확인","code":"<em># Acceptance Criteria</em>\n\n<strong>## AC-07 · 고위험 질문</strong>\nGiven 결제·환불 판단이 필요한 질문\nWhen AI가 신뢰 가능한 근거를 찾지 못하면\nThen 추측하지 않고 상담원에게 이관한다\n\n<strong>## Evidence</strong>\n- E2E: TC-044\n- Golden set: GS-HIGH-RISK"},
+        "architecture": {"name":"architecture.md","toast":"architecture.md · 실행 기준 확인","code":"<em># Architecture Boundary</em>\n\n<strong>## Stable Core</strong>\nChannel → API Contract → Domain Rules\n\n<strong>## Replaceable Edge</strong>\n- Model Adapter\n- Prompt & Retrieval\n- Safety Filter\n\n<strong>## Principle</strong>\n모델 변경이 업무 규칙을 흔들지 않는다."},
+        "nonfunctional": {"name":"non-functional.md","toast":"non-functional.md · 실행 기준 확인","code":"<em># Non-Functional Requirements</em>\n\n<strong>## Performance</strong>\n- P95 latency ≤ 3s\n- 300 concurrent users\n\n<strong>## Reliability</strong>\n- AI provider timeout: 5s\n- Fallback response available\n\n<strong>## Cost</strong>\n- 평균 요청 비용 ≤ ₩18"},
+        "decision": {"name":"decisions/ADR-004.md","toast":"decisions/ADR-004.md · 실행 기준 확인","code":"<em># ADR-004 · 정책과 모델 분리</em>\n\n<strong>## Decision</strong>\n환불 규칙은 Domain 계층에서 관리한다.\nLLM은 정책을 결정하지 않고 설명만 한다.\n\n<strong>## Why</strong>\n- 정책 변경을 즉시 반영\n- 결과를 결정론적으로 테스트\n- 모델 교체 영향 최소화"}
+      }
+      </script>
 
       <div class="spec-loop reveal">
         <article><span>01</span><b>MD 변경</b><p>의도와 기준을 먼저 수정</p></article><i>→</i>
@@ -181,12 +190,12 @@
         <h2>좋은 확장성은 기능을 많이 넣는 것이 아니라<br /><em>변경의 폭발 반경을 줄이는 것입니다.</em></h2>
       </div>
 
-      <div class="change-simulator reveal">
+      <div class="change-simulator reveal" data-impact-group="changes" data-impact-target="architectureMap" data-impact-message="changeMessage">
         <div class="change-controls">
           <span>CHANGE EVENT</span><h3>요구사항이 바뀌었습니다.</h3><p>변경 유형을 눌러 영향 범위를 확인하세요.</p>
-          <button class="active" type="button" data-change="model">AI 모델 교체</button>
-          <button type="button" data-change="policy">환불 정책 변경</button>
-          <button type="button" data-change="channel">모바일 채널 추가</button>
+          <button class="active" type="button" data-impact="model">AI 모델 교체</button>
+          <button type="button" data-impact="policy">환불 정책 변경</button>
+          <button type="button" data-impact="channel">모바일 채널 추가</button>
           <div id="changeMessage"><b>모델 어댑터</b>만 교체하고 골든셋을 재실행합니다.</div>
         </div>
         <div class="architecture-map" id="architectureMap">
@@ -197,6 +206,13 @@
           <i>→</i><article data-module="data"><span>05</span><b>DATA &amp; OPS</b><small>Store · Observe</small></article>
         </div>
       </div>
+      <script type="application/json" data-impact-json="changes">
+      {
+        "model": {"modules":["ai"],"message":["모델 어댑터","만 교체하고 골든셋을 재실행합니다."],"toast":"변경 영향: 1개 경계"},
+        "policy": {"modules":["domain","api"],"message":["도메인 규칙과 API 계약","을 수정하고 정책 회귀 시나리오를 검증합니다."],"toast":"변경 영향: 2개 경계"},
+        "channel": {"modules":["channel","api"],"message":["채널과 API 계약","만 확장하고 핵심 업무 규칙은 그대로 유지합니다."],"toast":"변경 영향: 2개 경계"}
+      }
+      </script>
 
       <div class="design-rules reveal">
         <article><span>BOUNDARY</span><h3>경계가 명확해야 한다</h3><p>API 계약과 도메인 규칙을 AI 모델에서 분리합니다.</p></article>
