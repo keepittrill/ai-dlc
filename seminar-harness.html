@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="에이전트가 신뢰성 있게 일하는 환경을 설계하는 하네스 엔지니어링 세미나" />
+  <title>Harness Engineering — 에이전트의 일할 환경을 설계하다</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-theme="blueprint">
+  <div class="reading-progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html" aria-label="세미나 선택으로 돌아가기">
+      <span class="brand-mark">AI</span><span>AI-NATIVE SE</span>
+    </a>
+    <nav class="desktop-nav" aria-label="세미나 주요 목차">
+      <a href="#why">WHY</a><a href="#analogy">ANALOGY</a><a href="#seven">THE 7</a>
+      <a href="#guardrail">GUARDRAIL</a><a href="#start">START</a>
+    </nav>
+    <div class="header-actions">
+      <div class="theme-switcher" aria-label="디자인 선택">
+        <button type="button" data-set-theme="command" title="Command Center">01</button>
+        <button type="button" data-set-theme="editorial" title="Swiss Editorial">02</button>
+        <button type="button" data-set-theme="flow" title="Evidence Flow">03</button>
+        <button type="button" data-set-theme="paper" title="Docs Light">04</button>
+        <button type="button" data-set-theme="blueprint" title="Engineering Blueprint">05</button>
+      </div>
+      <button class="icon-button" id="presentButton" type="button" aria-label="슬라이드 모드" title="슬라이드 모드 (P)">P</button>
+      <button class="menu-button" id="menuButton" type="button" aria-label="메뉴 열기"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#why">WHY</a><a href="#analogy">ANALOGY</a><a href="#seven">THE 7</a>
+    <a href="#guardrail">GUARDRAIL</a><a href="#start">START</a>
+  </aside>
+
+  <main>
+    <section class="hero scene" id="top" data-scene="00">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">HARNESS ENGINEERING · 60 MIN</p>
+        <h1>천재 신입에게 필요한 건<br /><em>더 좋은 지시문이 아닙니다.</em></h1>
+        <p class="hero-lead">능력 있는 신입이 와도 계정·위키·리뷰 절차가 없으면 일이 안 됩니다. 에이전트도 똑같습니다 — 오늘은 “프롬프트를 잘 쓰는 법”이 아니라 <b>에이전트가 신뢰성 있게 일하는 환경(하네스)</b>을 설계하는 법을 봅니다.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#why">세미나 시작하기 <span>→</span></a>
+          <button class="text-button" type="button" data-open-dialog="agendaDialog">아젠다 보기</button>
+        </div>
+      </div>
+
+      <div class="hero-metrics reveal">
+        <div><span>Prompt</span><strong>↓</strong><small>문장 최적화</small></div>
+        <div><span>Context</span><strong>→</strong><small>재료 큐레이션</small></div>
+        <div><span>Harness</span><strong>↑</strong><small>환경 설계</small></div>
+      </div>
+      <a class="scroll-cue" href="#why"><span></span>SCROLL TO EXPLORE</a>
+    </section>
+
+    <section class="scene chapter" id="why" data-scene="01">
+      <div class="section-number">01 / THE SHIFT</div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">PROMPT → CONTEXT → HARNESS</p>
+        <h2>최적화의 대상이<br /><em>문장에서 환경으로 옮겨갔습니다.</em></h2>
+        <p>같은 과제(“이 코드 리팩토링해줘”)를 시대별로 어떻게 다뤘는지 보면 진화가 선명합니다.</p>
+      </div>
+
+      <div class="era-track reveal" aria-label="프롬프트에서 하네스로의 진화">
+        <article><span>2023 · PROMPT</span><h4>문장 최적화</h4><p>“너는 시니어야. 단계별로 생각해.”<br />최적화 대상: <b>한 번의 입력</b></p></article>
+        <article><span>2024 · CONTEXT</span><h4>재료 큐레이션</h4><p>관련 파일 + 컨벤션 문서 + 예시 코드<br />최적화 대상: <b>무엇을 보여줄까</b></p></article>
+        <article><span>2025~ · HARNESS</span><h4>환경 설계</h4><p>도구·권한·자동 테스트·메모리·로그<br />최적화 대상: <b>어떻게 일하게 할까</b></p></article>
+        <article><span>ROLE SHIFT</span><h4>사람의 역할</h4><p>주문 외우는 사람 → 자료 고르는 사람 →<br /><b>환경을 설계하는 사람</b></p></article>
+      </div>
+
+      <div class="test-split reveal">
+        <article><span>왜 프롬프트만으론 부족한가</span><h3>세 가지 이유</h3><p>에이전트는 자율적으로 오래 일한다</p><ul><li>수십 번 도구를 호출 — 10번째 호출까지 문장으로 통제 불가</li><li>확률적 — 지난주엔 됐는데 오늘은 규칙을 무시</li><li>컨텍스트가 동적 — 어제 고른 파일이 오늘은 무의미</li></ul></article>
+        <article><span>그래서 필요한 것</span><h3>환경 장치</h3><p>문장이 아니라 실행 시점의 장치</p><ul><li>위험 명령을 <b>실행 시점에 차단</b>하는 권한 장치</li><li>어기면 안 되는 규칙은 <b>결정적 장치(훅)</b>로</li><li>필요할 때 <b>찾아오는 장치</b>(검색·MCP·메모리)</li></ul></article>
+      </div>
+
+      <div class="myth-card reveal">
+        <div><span>MYTH</span><h3>“프롬프트만 완벽하게 쓰면 에이전트는 잘 동작한다?”</h3></div>
+        <button type="button">정답 확인</button>
+        <p data-quiz-answer hidden><strong>아닙니다.</strong> 첫 프롬프트가 완벽해도 에이전트가 수십 번 도구를 호출하는 동안 벌어질 일까지 문장으로 통제할 수 없습니다. “조심해서 작업해”라고 아무리 써도, 위험 명령을 실행 시점에 차단하는 권한 장치만 못합니다. 통제는 문장이 아니라 <b>환경</b>에서 나옵니다.</p>
+      </div>
+    </section>
+
+    <section class="scene chapter" id="analogy" data-scene="02">
+      <div class="section-number">02 / THE ANALOGY</div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">THE GENIUS NEWCOMER</p>
+        <h2>힘 좋은 말일수록<br /><em>마구(harness)가 필요합니다.</em></h2>
+        <p>“하네스”는 말의 마구에서 온 말입니다. 힘이 문제가 아니라, 그 힘을 전달하고 방향을 잡는 장치가 없으면 마차를 못 끕니다.</p>
+      </div>
+
+      <div class="case-intro reveal">
+        <div class="case-intro-badge"><span>ANALOGY</span><b>🧑‍💼</b></div>
+        <div>
+          <h3>능력 있는 신입이 입사했습니다</h3>
+          <p>이 신입을 잘 쓰는 방법은 무엇일까요? <strong>지시문을 더 정교하게 쓰는 것</strong>은 한계가 있습니다 — 지시가 완벽해도 신입이 사내 시스템 접근 권한이 없고, 회사 위키를 못 보고, 결과를 검토해줄 사람이 없으면 일이 안 됩니다.</p>
+          <p>정답은 <strong>일할 환경을 만들어주는 것</strong>입니다 — 계정과 권한(어디까지 만질 수 있나), 사내 위키(맥락), 코드 리뷰 절차(검증), 업무 기록(추적), 멘토와 협업 채널(조율). 에이전트도 정확히 같습니다. 그 환경 일체가 <b>하네스</b>입니다.</p>
+        </div>
+      </div>
+
+      <div class="two-paths reveal">
+        <article><span>❌ 지시문 정교화</span><h3>“더 잘 주문하기”</h3><p>문장을 아무리 다듬어도 권한·맥락·검증이 없으면 성과의 상한이 낮습니다.</p><b>PROMPT ONLY</b></article>
+        <article><span>✅ 환경 설계</span><h3>“일하게 만들기”</h3><p>도구·권한·검증·기억·관찰을 갖춰 에이전트가 신뢰성 있게 일하게 합니다.</p><b>HARNESS</b></article>
+      </div>
+      <p class="stage-takeaway reveal"><b>관점 전환:</b> 힘(모델 성능)이 아니라 <b>힘을 전달하고 방향을 잡는 장치</b>가 성과를 좌우합니다.</p>
+    </section>
+
+    <section class="scene chapter" id="seven" data-scene="03">
+      <div class="section-number">03 / THE SEVEN</div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">SEVEN COMPONENTS OF A HARNESS</p>
+        <h2>하네스를 이루는<br /><em>일곱 가지 장치.</em></h2>
+        <p>각 항목을 눌러 “신입사원 비유 · 실무 예 · 없으면 생기는 일”을 확인하세요.</p>
+      </div>
+
+      <div class="detail-group" data-detail-group="seven" data-detail-target="sevenDetail">
+        <div class="framework-stack reveal">
+          <button type="button" class="active" data-detail="tools"><span>01</span><b>TOOLS</b><small>도구 정의 · 권한</small></button>
+          <button type="button" data-detail="evals"><span>02</span><b>EVALS</b><small>품질 평가 자동화</small></button>
+          <button type="button" data-detail="memory"><span>03</span><b>MEMORY</b><small>지속 컨텍스트</small></button>
+          <button type="button" data-detail="mcp"><span>04</span><b>MCP</b><small>외부 시스템 연결</small></button>
+          <button type="button" data-detail="permissions"><span>05</span><b>PERMISSIONS</b><small>권한 경계</small></button>
+          <button type="button" data-detail="observability"><span>06</span><b>OBSERVABILITY</b><small>관찰성 · 로깅</small></button>
+          <button type="button" data-detail="orchestration"><span>07</span><b>ORCHESTRATION</b><small>다중 에이전트</small></button>
+        </div>
+        <div class="failure-detail reveal" id="sevenDetail">
+          <b>🛠 Tools — 업무용 프로그램·계정</b>
+          <div class="f-grid">
+            <div><span>실무 예</span><p>파일 읽기/쓰기, Bash, 검색</p></div>
+            <div><span>Claude Code에서는</span><p>내장 도구들</p></div>
+            <div><span>없으면 생기는 일</span><p>에이전트가 “손이 없음” — 말만 하고 실행을 못 함</p></div>
+          </div>
+        </div>
+      </div>
+      <script type="application/json" data-detail-json="seven">
+      {
+        "tools": {"head":"🛠 Tools — 업무용 프로그램·계정","columns":[
+          {"head":"실무 예","body":"파일 읽기/쓰기, Bash, 검색"},
+          {"head":"Claude Code에서는","body":"내장 도구들"},
+          {"head":"없으면 생기는 일","body":"에이전트가 “손이 없음” — 말만 하고 실행을 못 함"}]},
+        "evals": {"head":"✅ Evals — 코드 리뷰·QA 절차","columns":[
+          {"head":"실무 예","body":"단위 테스트, lint, 사후 LLM 검증"},
+          {"head":"Claude Code에서는","body":"훅에서 테스트 실행"},
+          {"head":"없으면 생기는 일","body":"그럴듯하지만 틀린 결과가 그대로 통과"}]},
+        "memory": {"head":"🧠 Memory — 업무 인수인계 노트","columns":[
+          {"head":"실무 예","body":"Claude Code memory, RAG"},
+          {"head":"Claude Code에서는","body":"memory/ 디렉토리"},
+          {"head":"없으면 생기는 일","body":"매 세션 처음부터 설명 반복, 같은 실수 재발"}]},
+        "mcp": {"head":"🔌 MCP — 타 부서 시스템 접근권","columns":[
+          {"head":"실무 예","body":"Slack, Jira, Sentry MCP 서버"},
+          {"head":"Claude Code에서는","body":".mcp.json 서버들"},
+          {"head":"없으면 생기는 일","body":"외부 시스템마다 수동 복붙 노동"}]},
+        "permissions": {"head":"🚧 Permissions — 접근 권한 등급","columns":[
+          {"head":"실무 예","body":"훅, allow/deny 정책"},
+          {"head":"Claude Code에서는","body":"settings.json의 permissions"},
+          {"head":"없으면 생기는 일","body":"실수 한 번이 rm -rf · prod 배포 사고로 직결"}]},
+        "observability": {"head":"📊 Observability — 업무 일지","columns":[
+          {"head":"실무 예","body":"추론 로그, 도구 호출 trace"},
+          {"head":"Claude Code에서는","body":"세션 로그 · audit 훅"},
+          {"head":"없으면 생기는 일","body":"사고가 나도 “왜 그랬는지” 재구성 불가"}]},
+        "orchestration": {"head":"🎼 Orchestration — 팀 편성·업무 분장","columns":[
+          {"head":"실무 예","body":"Subagent, 워크플로우 엔진"},
+          {"head":"Claude Code에서는","body":"subagent / skill"},
+          {"head":"없으면 생기는 일","body":"큰 일을 통째로 한 명이 — 컨텍스트 초과·품질 저하"}]}
+      }
+      </script>
+      <p class="stage-takeaway reveal"><b>이미 하고 있습니다:</b> Claude Code를 쓰는 팀이라면 7대 장치가 이미 도구·훅·memory·settings에 1:1로 매핑됩니다. 새로 배울 것이 아니라 <b>의식적으로 설계할</b> 대상입니다.</p>
+    </section>
+
+    <section class="scene chapter" id="guardrail" data-scene="04">
+      <div class="section-number">04 / GUARDRAIL vs GUIDE</div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">DETERMINISTIC vs PROBABILISTIC</p>
+        <h2>같은 규칙이라도<br /><em>강제 방식이 다릅니다.</em></h2>
+        <p>하네스 설계에서 가장 자주 마주치는 실무 분기점입니다.</p>
+      </div>
+
+      <div class="test-split reveal">
+        <article><span>결정적 가드레일</span><h3>차단봉 · 과속방지턱</h3><p>조건 매칭 시 무조건 차단/실행 (코드가 실행됨)</p><ul><li>수단: 훅, permission 정책, CI 게이트</li><li>실패 모드: 없음</li><li>적합: 보안·파괴적 행동·컴플라이언스</li></ul></article>
+        <article><span>확률적 가이드</span><h3>표지판 · 안내문</h3><p>모델이 “따르려고 노력”함</p><ul><li>수단: CLAUDE.md, steering file, 프롬프트</li><li>실패 모드: 길어지면 잊거나 무시 가능</li><li>적합: 스타일·구조·관례</li></ul></article>
+      </div>
+
+      <div class="case-link reveal">
+        <span>🧭</span>
+        <p><b>판별 질문 하나면 충분합니다</b> — <b>“이 규칙이 단 1번이라도 어겨지면 사고인가?”</b> 예(보안·데이터·돈)라면 결정적 가드레일(훅·permissions·CI). 아니오(품질·스타일)라면 확률적 가이드(CLAUDE.md·steering file).</p>
+      </div>
+
+      <div class="myth-card reveal">
+        <div><span>QUIZ</span><h3>“절대 force push 하지 마”를 CLAUDE.md에 적었습니다. 충분할까요?</h3></div>
+        <button type="button">정답 확인</button>
+        <p data-quiz-answer hidden><strong>아닙니다.</strong> CLAUDE.md는 확률적 가이드라 컨텍스트가 길어지면 잊거나 무시될 수 있습니다. 어겨지면 사고인 규칙(force push, PII 커밋, prod 배포)은 <b>훅으로 결정적으로 차단</b>해야 합니다. 반대로 스타일·구조 같은 “어겨져도 고치면 그만”인 규칙까지 훅으로 만들면 유연성이 죽고 유지보수 비용만 커집니다.</p>
+      </div>
+    </section>
+
+    <section class="scene chapter" id="start" data-scene="05">
+      <div class="section-number">05 / MAP & START</div>
+      <div class="chapter-head reveal">
+        <p class="eyebrow">YOU ALREADY HAVE 5 OF 7</p>
+        <h2>빈손이 아닙니다.<br /><em>부족한 곳부터 채우세요.</em></h2>
+        <p>우리 프로젝트를 7대 장치로 매핑하면 이미 대부분을 갖추고 있습니다.</p>
+      </div>
+
+      <div class="role-boundary reveal">
+        <div><b>✅ 이미 갖춘 것 (5/7)</b><p>Tools · Memory(memory/) · MCP · Permissions(settings.json) · Observability(audit 훅) — 그리고 Steering(CLAUDE.md)</p></div>
+        <div><b>⬜ 부족한 것</b><p>Evals 자동화(테스트를 에이전트 루프에 연결) · Orchestration 다중 에이전트 패턴</p></div>
+        <div><b>🎯 다음 한 걸음</b><p>완료 전에 테스트·lint를 자동 실행하는 Evals 훅부터 — 가장 큰 품질 레버</p></div>
+      </div>
+
+      <div class="roadmap reveal">
+        <article><span>STEP 1–2</span><h3>사고부터 막는다</h3><ul><li>Permissions — deny 목록·위험 명령 차단 훅</li><li>Steering(CLAUDE.md) — 팀 규칙을 확률적 가이드로</li></ul></article>
+        <article><span>STEP 3–4</span><h3>품질과 기억을 붙인다</h3><ul><li>Evals — 테스트·lint를 에이전트 루프에 연결</li><li>Memory — 반복 설명을 파일로 외재화</li></ul></article>
+        <article><span>STEP 5+</span><h3>규모가 커질 때</h3><ul><li>MCP — 외부 시스템 연결</li><li>Observability · Orchestration 단계적 확장</li></ul></article>
+      </div>
+
+      <div class="case-link reveal">
+        <span>🔗</span>
+        <p><b>짝꿍 토픽</b> — 하네스가 “도로와 신호등(기반 시설)”이라면 <a href="seminar.html?theme=blueprint">AI-DLC는 “교통 법규(방법론)”</a>입니다. 법규만 있고 도로가 없으면 못 달리고, 도로만 있고 법규가 없으면 사고가 납니다. 두 주제는 항상 한 세트입니다.</p>
+      </div>
+
+      <p class="stage-takeaway reveal"><b>오늘 요청은 단 하나입니다:</b> 다음 프로젝트에서 “프롬프트를 더 다듬을까”를 멈추고, <b>“이 에이전트가 일할 환경에서 무엇이 비어 있나”</b>를 7대 장치로 점검하세요.</p>
+
+      <div class="final-statement reveal">
+        <p>HARNESS ENGINEERING PRINCIPLE</p>
+        <h2>힘이 아니라,<br /><em>힘을 전달하는 장치를 설계한다.</em></h2>
+        <a class="primary-button" href="#sources">출처 확인 <span>↓</span></a>
+      </div>
+    </section>
+
+    <section class="sources scene" id="sources" data-scene="06">
+      <div class="section-number">06 / SOURCES</div>
+      <div class="chapter-head reveal"><p class="eyebrow">REFERENCES</p><h2>더 깊이 보기</h2></div>
+      <div class="source-grid reveal">
+        <a href="https://github.com/awskrug/platform-engineering-group/blob/main/presentations/0019-harness-engineering-ai-dlc.pdf" target="_blank" rel="noreferrer"><span>TALK</span><b>AWSKRUG PEG #19</b><small>하네스 엔지니어링 · AI-DLC 발표 (2026-04-15) ↗</small></a>
+        <a href="seminar.html?theme=blueprint"><span>PARTNER</span><b>AI-DLC 세미나</b><small>방법론 — 하네스의 짝꿍 토픽 →</small></a>
+      </div>
+      <p class="stage-takeaway reveal"><b>명칭 주의:</b> “Harness Engineering”은 AWS의 공식 표준 명칭이 아니라, “프롬프트 → 컨텍스트 → 하네스” 흐름을 설명하려 업계에서 쓰기 시작한 용어입니다. CI/CD 회사 “Harness”와도 무관합니다.</p>
+      <footer><span>AI-NATIVE SE</span><p>SE Organization Tech Seminar · Designed for GitHub Pages</p><a href="#top">BACK TO TOP ↑</a></footer>
+    </section>
+  </main>
+
+  <dialog id="agendaDialog">
+    <button type="button" class="dialog-close" data-close-dialog aria-label="닫기">×</button>
+    <span class="eyebrow">60 MIN AGENDA</span><h2>세미나 구성</h2>
+    <ol><li><b>10분</b> 프롬프트 → 컨텍스트 → 하네스</li><li><b>10분</b> 천재 신입 비유</li><li><b>20분</b> 하네스 7대 장치</li><li><b>10분</b> 결정적 가드레일 vs 확률적 가이드</li><li><b>10분</b> 매핑과 착수 순서</li></ol>
+  </dialog>
+
+  <dialog id="keyboardDialog">
+    <button type="button" class="dialog-close" data-close-dialog aria-label="닫기">×</button>
+    <span class="eyebrow">KEYBOARD</span><h2>빠른 조작</h2>
+    <div class="shortcut-grid"><kbd>T</kbd><span>디자인 전환</span><kbd>P</kbd><span>슬라이드 모드</span><kbd>?</kbd><span>이 도움말</span><kbd>ESC</kbd><span>창 닫기</span></div>
+  </dialog>
+
+  <button class="help-button" type="button" data-open-dialog="keyboardDialog" aria-label="키보드 도움말">?</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
