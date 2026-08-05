@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{DESC}}" />
+  <title>{{TITLE}}</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-theme="flow">
+  <div class="reading-progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html" aria-label="세미나 선택으로 돌아가기">
+      <span class="brand-mark">AI</span><span>AI-NATIVE SE</span>
+    </a>
+    <nav class="desktop-nav" aria-label="세미나 주요 목차">
+      {{NAV_LINKS}}
+    </nav>
+    <div class="header-actions">
+      <div class="theme-switcher" aria-label="디자인 선택">
+        <button type="button" data-set-theme="command" title="Command Center">01</button>
+        <button type="button" data-set-theme="editorial" title="Swiss Editorial">02</button>
+        <button type="button" data-set-theme="flow" title="Evidence Flow">03</button>
+        <button type="button" data-set-theme="paper" title="Docs Light">04</button>
+        <button type="button" data-set-theme="blueprint" title="Engineering Blueprint">05</button>
+      </div>
+      <button class="icon-button" id="presentButton" type="button" aria-label="슬라이드 모드" title="슬라이드 모드 (P)">P</button>
+      <button class="menu-button" id="menuButton" type="button" aria-label="메뉴 열기"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    {{NAV_LINKS}}
+  </aside>
+
+  <main>
+    <!-- SCENES:START -->
+    {{SECTIONS}}
+    <!-- SCENES:END -->
+  </main>
+
+  <dialog id="agendaDialog">
+    <button type="button" class="dialog-close" data-close-dialog aria-label="닫기">×</button>
+    <span class="eyebrow">AGENDA</span><h2>세미나 구성</h2>
+    <ol>{{AGENDA_ITEMS}}</ol>
+  </dialog>
+
+  <dialog id="keyboardDialog">
+    <button type="button" class="dialog-close" data-close-dialog aria-label="닫기">×</button>
+    <span class="eyebrow">KEYBOARD</span><h2>빠른 조작</h2>
+    <div class="shortcut-grid"><kbd>T</kbd><span>디자인 전환</span><kbd>P</kbd><span>슬라이드 모드</span><kbd>?</kbd><span>이 도움말</span><kbd>ESC</kbd><span>창 닫기</span></div>
+  </dialog>
+
+  <button class="help-button" type="button" data-open-dialog="keyboardDialog" aria-label="키보드 도움말">?</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
