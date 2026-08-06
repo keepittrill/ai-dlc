@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko" data-doc-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{DESC}}" />
+  <title>{{TITLE}} · Docs</title>
+  <link rel="stylesheet" href="doc.css" />
+</head>
+<body>
+  <header class="wk-topbar">
+    <a class="wk-brand" href="docs.html"><span class="wk-brand-mark">AI</span> Docs Space <small>AI-NATIVE SE</small></a>
+    <div class="wk-topbar-spacer"></div>
+    <a class="wk-iconbtn" href="index.html" title="세미나 허브" aria-label="세미나 허브">◇</a>
+    <button class="wk-iconbtn" type="button" data-doc-theme-toggle aria-label="다크 모드">☾</button>
+  </header>
+
+  <div class="wk-shell">
+    <nav class="wk-toc" data-doc-toc-wrap data-collapsed="false" aria-label="목차">
+      <button class="wk-toc-toggle" type="button" data-doc-toc-toggle>ON THIS PAGE <span>▾</span></button>
+      <p class="wk-toc-title">On this page</p>
+      <div data-doc-toc></div>
+    </nav>
+
+    <main class="wk-main">
+      <nav class="wk-breadcrumb" aria-label="위치">
+        {{BREADCRUMB}}
+      </nav>
+
+      <header class="wk-page-header">
+        <h1>{{TITLE}}</h1>
+        <div class="wk-meta">
+          {{META}}
+          <span>⏱ 읽는 시간 <b data-doc-readtime>—</b></span>
+        </div>
+        <div class="wk-labels">
+          {{LABELS}}
+        </div>
+      </header>
+
+      <article class="wk-body">
+        {{BODY}}
+
+        <footer class="wk-footer">
+          <div>{{FOOTER}}</div>
+          <div class="wk-related">
+            <a href="docs.html">← Docs Space</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+  </div>
+
+  <script src="doc.js"></script>
+</body>
+</html>

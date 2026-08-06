@@ -1,0 +1,365 @@
+/* ==========================================================================
+   doc.css — 위키/문서 트랙 디자인 시스템 (Confluence 계열)
+   --------------------------------------------------------------------------
+   세미나 트랙(styles.css)과 분리된 "문서" 트랙의 공유 스타일이다.
+   철학은 동일: 이 파일은 "어떻게 보이는가"(메커니즘)만 담고,
+   각 doc-<slug>.html 은 "무엇을 말하는가"(콘텐츠)를 자급자족한다.
+   토큰만 쓰고 색/폰트/radius 는 절대 하드코딩하지 않는다.
+   테마: <html data-doc-theme="light|dark"> (doc.js 가 토글).
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* neutrals */
+  --wk-app-bg: #f7f8f9;
+  --wk-surface: #ffffff;
+  --wk-surface-sunken: #f1f2f4;
+  --wk-line: #dfe1e6;
+  --wk-line-soft: #ebecf0;
+  --wk-text: #172b4d;
+  --wk-heading: #091e42;
+  --wk-muted: #626f86;
+  --wk-faint: #8993a4;
+  /* brand / link */
+  --wk-link: #0c66e4;
+  --wk-link-hover: #0055cc;
+  --wk-accent-soft: #e9f2ff;
+  /* panel families (bg / bar-icon) */
+  --wk-info-bg: #e9f2ff;     --wk-info-bar: #0c66e4;
+  --wk-note-bg: #f3f0ff;     --wk-note-bar: #6e5dc6;
+  --wk-tip-bg: #dcfff1;      --wk-tip-bar: #22a06b;
+  --wk-success-bg: #dcfff1;  --wk-success-bar: #22a06b;
+  --wk-warn-bg: #fff7d6;     --wk-warn-bar: #cf9f02;
+  --wk-error-bg: #ffeceb;    --wk-error-bar: #e34935;
+  /* code + status */
+  --wk-code-bg: #f1f2f4;
+  --wk-code-text: #172b4d;
+  --wk-pre-bg: #091e42;
+  --wk-pre-text: #dee4ee;
+  --wk-selection: #b3d4ff;
+  --wk-shadow: 0 1px 1px rgba(9,30,66,.12), 0 0 1px rgba(9,30,66,.14);
+  --wk-shadow-lift: 0 8px 24px rgba(9,30,66,.14);
+  --wk-radius: 6px;
+  --wk-radius-lg: 12px;
+  --wk-font: Inter, "Noto Sans KR", Pretendard, system-ui, -apple-system, sans-serif;
+  --wk-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  --wk-content: 800px;
+  --wk-toc: 232px;
+}
+
+[data-doc-theme="dark"] {
+  --wk-app-bg: #1d2125;
+  --wk-surface: #22272b;
+  --wk-surface-sunken: #282e33;
+  --wk-line: #38414a;
+  --wk-line-soft: #2c333a;
+  --wk-text: #c7d1db;
+  --wk-heading: #dee4ea;
+  --wk-muted: #96a0ab;
+  --wk-faint: #738496;
+  --wk-link: #579dff;
+  --wk-link-hover: #85b8ff;
+  --wk-accent-soft: #1c2b41;
+  --wk-info-bg: #16273f;     --wk-info-bar: #579dff;
+  --wk-note-bg: #282433;     --wk-note-bar: #9f8fef;
+  --wk-tip-bg: #143024;      --wk-tip-bar: #4bce97;
+  --wk-success-bg: #143024;  --wk-success-bar: #4bce97;
+  --wk-warn-bg: #332e1b;     --wk-warn-bar: #e2b203;
+  --wk-error-bg: #3b201d;    --wk-error-bar: #f87168;
+  --wk-code-bg: #2c333a;
+  --wk-code-text: #dee4ea;
+  --wk-pre-bg: #0d1117;
+  --wk-pre-text: #c7d1db;
+  --wk-selection: #204073;
+  --wk-shadow: 0 1px 1px rgba(0,0,0,.3), 0 0 1px rgba(0,0,0,.4);
+  --wk-shadow-lift: 0 8px 24px rgba(0,0,0,.4);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--wk-app-bg); color: var(--wk-text);
+  font-family: var(--wk-font); font-size: 15px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background .25s ease, color .25s ease;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+a { color: var(--wk-link); text-decoration: none; }
+a:hover { color: var(--wk-link-hover); text-decoration: underline; }
+::selection { background: var(--wk-selection); }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+/* ---- top bar -------------------------------------------------------------- */
+.wk-topbar {
+  position: sticky; top: 0; z-index: 40;
+  display: flex; align-items: center; gap: 16px;
+  height: 56px; padding: 0 24px;
+  background: color-mix(in srgb, var(--wk-surface) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--wk-line);
+}
+.wk-brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; color: var(--wk-heading); }
+.wk-brand:hover { text-decoration: none; }
+.wk-brand-mark {
+  display: grid; place-items: center; width: 26px; height: 26px;
+  background: var(--wk-link); color: #fff; font-size: 12px; font-weight: 800;
+  border-radius: 5px;
+}
+.wk-brand small { color: var(--wk-muted); font-weight: 600; font-size: 12px; letter-spacing: .04em; }
+.wk-topbar-spacer { margin-left: auto; }
+.wk-iconbtn {
+  display: inline-grid; place-items: center; width: 34px; height: 34px;
+  border: 1px solid var(--wk-line); border-radius: var(--wk-radius);
+  background: var(--wk-surface); color: var(--wk-muted); font-size: 15px;
+  transition: background .15s ease, border-color .15s ease;
+}
+.wk-iconbtn:hover { background: var(--wk-surface-sunken); color: var(--wk-heading); }
+
+/* ---- shell layout --------------------------------------------------------- */
+.wk-shell {
+  display: grid;
+  grid-template-columns: var(--wk-toc) minmax(0, 1fr);
+  gap: 40px;
+  max-width: calc(var(--wk-toc) + var(--wk-content) + 40px + 96px);
+  margin: 0 auto; padding: 32px 48px 120px;
+}
+.wk-main { min-width: 0; max-width: var(--wk-content); }
+
+/* ---- ToC rail ("ON THIS PAGE") ------------------------------------------- */
+.wk-toc {
+  position: sticky; top: 84px; align-self: start;
+  max-height: calc(100vh - 110px); overflow: auto;
+  font-size: 13px;
+}
+.wk-toc-title {
+  font-size: 11px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--wk-faint); margin: 0 0 12px; padding-left: 13px;
+}
+.wk-toc ul { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--wk-line); }
+.wk-toc li { margin: 0; }
+.wk-toc a {
+  display: block; padding: 5px 10px 5px 13px; margin-left: -2px;
+  border-left: 2px solid transparent; color: var(--wk-muted); line-height: 1.4;
+}
+.wk-toc a:hover { color: var(--wk-heading); text-decoration: none; }
+.wk-toc a.is-sub { padding-left: 26px; font-size: 12.5px; }
+.wk-toc a.is-active { color: var(--wk-link); border-left-color: var(--wk-link); font-weight: 600; }
+.wk-toc-empty { color: var(--wk-faint); padding-left: 13px; }
+
+/* ---- breadcrumb + page header -------------------------------------------- */
+.wk-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12.5px; color: var(--wk-muted); margin-bottom: 20px; }
+.wk-breadcrumb a { color: var(--wk-muted); }
+.wk-breadcrumb a:hover { color: var(--wk-link); }
+.wk-breadcrumb span { color: var(--wk-faint); }
+
+.wk-page-header { border-bottom: 1px solid var(--wk-line); padding-bottom: 22px; margin-bottom: 30px; }
+.wk-page-header h1 {
+  font-size: clamp(28px, 4vw, 40px); line-height: 1.2; font-weight: 800;
+  color: var(--wk-heading); letter-spacing: -.015em; margin: 0 0 16px;
+}
+.wk-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; font-size: 13px; color: var(--wk-muted); }
+.wk-meta > span { display: inline-flex; align-items: center; gap: 7px; }
+.wk-avatar {
+  display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--wk-link); color: #fff; font-size: 11px; font-weight: 700;
+}
+.wk-labels { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+.wk-label {
+  display: inline-block; padding: 3px 10px; border-radius: 3px;
+  background: var(--wk-surface-sunken); color: var(--wk-muted);
+  font-size: 12px; font-weight: 600;
+}
+.wk-label:hover { background: var(--wk-accent-soft); color: var(--wk-link); text-decoration: none; }
+
+/* ---- body typography ------------------------------------------------------ */
+.wk-body { }
+.wk-body > *:first-child { margin-top: 0; }
+.wk-body h2 {
+  font-size: 24px; font-weight: 700; color: var(--wk-heading); letter-spacing: -.01em;
+  line-height: 1.3; margin: 44px 0 14px; padding-top: 6px; scroll-margin-top: 78px;
+}
+.wk-body h3 {
+  font-size: 18px; font-weight: 700; color: var(--wk-heading);
+  margin: 30px 0 10px; scroll-margin-top: 78px;
+}
+.wk-body h4 { font-size: 15px; font-weight: 700; color: var(--wk-heading); margin: 22px 0 8px; }
+.wk-body p { margin: 0 0 15px; }
+.wk-body ul, .wk-body ol { margin: 0 0 15px; padding-left: 24px; }
+.wk-body li { margin: 5px 0; }
+.wk-body li > ul, .wk-body li > ol { margin: 5px 0; }
+.wk-body strong { color: var(--wk-heading); font-weight: 700; }
+.wk-body hr { border: none; border-top: 1px solid var(--wk-line); margin: 34px 0; }
+
+/* heading anchor (doc.js adds .wk-anchor) */
+.wk-heading-link { position: relative; }
+.wk-anchor {
+  position: absolute; left: -22px; top: 50%; transform: translateY(-50%);
+  opacity: 0; color: var(--wk-faint); font-weight: 400; transition: opacity .12s ease;
+}
+.wk-heading-link:hover .wk-anchor { opacity: 1; }
+.wk-anchor:hover { color: var(--wk-link); text-decoration: none; }
+
+/* blockquote */
+.wk-body blockquote {
+  margin: 0 0 18px; padding: 4px 0 4px 18px;
+  border-left: 3px solid var(--wk-line); color: var(--wk-muted); font-style: italic;
+}
+
+/* inline code + code block */
+.wk-body code {
+  font-family: var(--wk-mono); font-size: .86em;
+  background: var(--wk-code-bg); color: var(--wk-code-text);
+  padding: .12em .4em; border-radius: 4px;
+}
+.wk-code {
+  position: relative; margin: 0 0 20px;
+  border: 1px solid var(--wk-line); border-radius: var(--wk-radius); overflow: hidden;
+  background: var(--wk-pre-bg);
+}
+.wk-code-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 7px 12px; border-bottom: 1px solid rgba(255,255,255,.08);
+  font-family: var(--wk-mono); font-size: 12px; color: #9fb0c9; letter-spacing: .03em;
+}
+.wk-code pre {
+  margin: 0; padding: 16px; overflow: auto;
+  font-family: var(--wk-mono); font-size: 13px; line-height: 1.6; color: var(--wk-pre-text);
+}
+.wk-code pre code { background: none; padding: 0; color: inherit; font-size: 13px; }
+.wk-copy {
+  border: 1px solid rgba(255,255,255,.16); border-radius: 5px;
+  background: rgba(255,255,255,.06); color: #cdd9ea;
+  padding: 3px 10px; font-size: 11.5px; font-weight: 600;
+  transition: background .15s ease;
+}
+.wk-copy:hover { background: rgba(255,255,255,.14); }
+.wk-copy.is-done { color: #7ee2b8; border-color: rgba(126,226,184,.4); }
+
+/* bare <pre> (no head) still gets copy button injected by doc.js */
+.wk-body > pre { margin: 0 0 20px; }
+
+/* ---- admonition panels ---------------------------------------------------- */
+.wk-panel {
+  display: grid; grid-template-columns: auto 1fr; gap: 12px;
+  margin: 0 0 20px; padding: 14px 16px;
+  border-radius: var(--wk-radius);
+  background: var(--wk-info-bg);
+  box-shadow: inset 3px 0 0 var(--wk-info-bar);
+}
+.wk-panel > .wk-panel-icon { font-size: 17px; line-height: 1.5; color: var(--wk-info-bar); }
+.wk-panel > div:last-child > *:first-child { margin-top: 0; }
+.wk-panel > div:last-child > *:last-child { margin-bottom: 0; }
+.wk-panel-title { display: block; font-weight: 700; color: var(--wk-heading); margin-bottom: 3px; }
+.wk-panel.is-note    { background: var(--wk-note-bg);    box-shadow: inset 3px 0 0 var(--wk-note-bar); }
+.wk-panel.is-note    .wk-panel-icon { color: var(--wk-note-bar); }
+.wk-panel.is-tip,
+.wk-panel.is-success { background: var(--wk-success-bg); box-shadow: inset 3px 0 0 var(--wk-success-bar); }
+.wk-panel.is-tip     .wk-panel-icon,
+.wk-panel.is-success .wk-panel-icon { color: var(--wk-success-bar); }
+.wk-panel.is-warning { background: var(--wk-warn-bg);    box-shadow: inset 3px 0 0 var(--wk-warn-bar); }
+.wk-panel.is-warning .wk-panel-icon { color: var(--wk-warn-bar); }
+.wk-panel.is-error   { background: var(--wk-error-bg);   box-shadow: inset 3px 0 0 var(--wk-error-bar); }
+.wk-panel.is-error   .wk-panel-icon { color: var(--wk-error-bar); }
+
+/* ---- expand (native details) --------------------------------------------- */
+.wk-expand { margin: 0 0 18px; border: 1px solid var(--wk-line); border-radius: var(--wk-radius); background: var(--wk-surface); overflow: hidden; }
+.wk-expand > summary {
+  list-style: none; cursor: pointer; user-select: none;
+  display: flex; align-items: center; gap: 9px;
+  padding: 11px 14px; font-weight: 600; color: var(--wk-heading);
+}
+.wk-expand > summary::-webkit-details-marker { display: none; }
+.wk-expand > summary::before {
+  content: "▸"; color: var(--wk-muted); font-size: 12px; transition: transform .18s ease;
+}
+.wk-expand[open] > summary::before { transform: rotate(90deg); }
+.wk-expand[open] > summary { border-bottom: 1px solid var(--wk-line-soft); }
+.wk-expand-body { padding: 14px; }
+.wk-expand-body > *:first-child { margin-top: 0; }
+.wk-expand-body > *:last-child { margin-bottom: 0; }
+
+/* ---- tables --------------------------------------------------------------- */
+.wk-table-wrap { margin: 0 0 20px; overflow-x: auto; border: 1px solid var(--wk-line); border-radius: var(--wk-radius); }
+.wk-body table, table.wk-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.wk-body th, .wk-body td, .wk-table th, .wk-table td {
+  padding: 9px 14px; text-align: left; vertical-align: top;
+  border-bottom: 1px solid var(--wk-line-soft); border-right: 1px solid var(--wk-line-soft);
+}
+.wk-body th, .wk-table th { background: var(--wk-surface-sunken); color: var(--wk-heading); font-weight: 700; }
+.wk-body tr:last-child td, .wk-table tr:last-child td { border-bottom: none; }
+.wk-body th:last-child, .wk-body td:last-child,
+.wk-table th:last-child, .wk-table td:last-child { border-right: none; }
+.wk-body tbody tr:hover td { background: color-mix(in srgb, var(--wk-accent-soft) 45%, transparent); }
+
+/* ---- status lozenge + inline chips --------------------------------------- */
+.wk-status {
+  display: inline-block; padding: 1px 8px; border-radius: 3px;
+  font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+  background: var(--wk-surface-sunken); color: var(--wk-muted); vertical-align: middle;
+}
+.wk-status.is-blue   { background: var(--wk-info-bg);    color: var(--wk-info-bar); }
+.wk-status.is-green  { background: var(--wk-success-bg); color: var(--wk-success-bar); }
+.wk-status.is-yellow { background: var(--wk-warn-bg);    color: var(--wk-warn-bar); }
+.wk-status.is-red    { background: var(--wk-error-bg);   color: var(--wk-error-bar); }
+.wk-status.is-purple { background: var(--wk-note-bg);    color: var(--wk-note-bar); }
+
+/* ---- key-value / definition cards ---------------------------------------- */
+.wk-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 0 0 20px; }
+.wk-card { padding: 14px 16px; border: 1px solid var(--wk-line); border-radius: var(--wk-radius); background: var(--wk-surface); }
+.wk-card > b { display: block; color: var(--wk-heading); margin-bottom: 4px; }
+.wk-card > span { color: var(--wk-muted); font-size: 13.5px; }
+
+/* ---- footer / related ----------------------------------------------------- */
+.wk-footer { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--wk-line); color: var(--wk-muted); font-size: 13px; }
+.wk-related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.wk-related a {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 12px; border: 1px solid var(--wk-line); border-radius: var(--wk-radius);
+  background: var(--wk-surface); color: var(--wk-heading); font-weight: 600; font-size: 13px;
+}
+.wk-related a:hover { border-color: var(--wk-link); color: var(--wk-link); text-decoration: none; }
+
+/* ---- mobile ToC toggle ---------------------------------------------------- */
+.wk-toc-toggle { display: none; }
+
+@media (max-width: 960px) {
+  .wk-shell { grid-template-columns: 1fr; gap: 0; padding: 24px 20px 90px; }
+  .wk-toc {
+    position: static; max-height: none; order: -1;
+    margin-bottom: 24px; padding: 12px 14px;
+    border: 1px solid var(--wk-line); border-radius: var(--wk-radius); background: var(--wk-surface);
+  }
+  .wk-toc[data-collapsed="true"] ul { display: none; }
+  .wk-toc-toggle {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    background: none; border: none; padding: 0; color: var(--wk-faint);
+    font-size: 11px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase;
+  }
+  .wk-toc-title { display: none; }
+  .wk-toc ul { margin-top: 12px; }
+}
+
+/* ==========================================================================
+   docs.html — 문서 스페이스 허브
+   ========================================================================== */
+.wk-space { max-width: 1080px; margin: 0 auto; padding: 40px 24px 96px; }
+.wk-space-hero { padding: 20px 0 30px; border-bottom: 1px solid var(--wk-line); margin-bottom: 32px; }
+.wk-space-hero .wk-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--wk-faint); margin: 0 0 10px; }
+.wk-space-hero h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; color: var(--wk-heading); letter-spacing: -.02em; margin: 0 0 12px; }
+.wk-space-hero p { color: var(--wk-muted); max-width: 60ch; margin: 0; }
+
+.wk-doc-list { display: grid; gap: 2px; }
+.wk-doc-row {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px;
+  padding: 16px 18px; border: 1px solid transparent; border-radius: var(--wk-radius);
+  background: var(--wk-surface); box-shadow: var(--wk-shadow);
+  transition: border-color .15s ease, transform .15s ease;
+}
+.wk-doc-row:hover { border-color: var(--wk-link); text-decoration: none; transform: translateY(-1px); }
+.wk-doc-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 8px; background: var(--wk-accent-soft); color: var(--wk-link); font-size: 18px; }
+.wk-doc-row h3 { margin: 0 0 3px; font-size: 16px; color: var(--wk-heading); }
+.wk-doc-row p { margin: 0; font-size: 13px; color: var(--wk-muted); }
+.wk-doc-row .wk-doc-go { color: var(--wk-faint); font-size: 18px; }
+.wk-doc-row:hover .wk-doc-go { color: var(--wk-link); }
+
+.wk-space-foot { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; color: var(--wk-muted); font-size: 13px; }
