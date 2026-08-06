@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ko" data-doc-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AI-Native 전환 브리프 — 왜 지금인가, 세 개의 기둥, 90일 로드맵" />
+  <title>AI-Native 전환 브리프 · Brief</title>
+  <link rel="stylesheet" href="doc.css" />
+  <link rel="stylesheet" href="brief.css" />
+</head>
+<body>
+  <div class="br-progress" data-br-progress><i></i></div>
+
+  <header class="wk-topbar">
+    <a class="wk-brand" href="docs.html"><span class="wk-brand-mark">AI</span> Docs Space <small>AI-NATIVE SE</small></a>
+    <div class="wk-topbar-spacer"></div>
+    <a class="wk-iconbtn" href="index.html" title="세미나 허브" aria-label="세미나 허브">◇</a>
+    <button class="wk-iconbtn" type="button" data-doc-theme-toggle aria-label="다크 모드">☾</button>
+  </header>
+
+  <!-- ============ HERO (화려함, 풀블리드) ============ -->
+  <section class="br-hero">
+    <div class="br-hero-inner">
+      <p class="br-eyebrow" data-reveal>Technical Brief · 2026</p>
+      <h1 data-reveal data-reveal-delay="80">AI가 더 많이 만들수록,<br /><em>누군가는 전체를 봐야 한다.</em></h1>
+      <p class="br-hero-lead" data-reveal data-reveal-delay="160">AI-Native 전환은 "코드를 더 빨리 찍어내는 것"이 아니라, <b>의도·경계·검증을 사람이 소유</b>한 채 생성 속도를 안전하게 끌어올리는 일입니다. 이 브리프는 왜·무엇을·어떻게를 5분 안에 정리합니다.</p>
+      <div class="br-hero-meta" data-reveal data-reveal-delay="220">
+        <span class="br-chip"><b>대상</b> 엔지니어링 리더</span>
+        <span class="br-chip"><b>읽는 시간</b> <span data-doc-readtime>—</span></span>
+        <span class="br-chip"><b>최종 수정</b> 2026-08-06</span>
+      </div>
+      <div class="br-cta-row" data-reveal data-reveal-delay="280">
+        <a class="br-btn" href="#roadmap">90일 로드맵 보기 <span>↓</span></a>
+        <a class="br-btn is-ghost" href="doc-ai-dlc.html">상세 문서로</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 본문: ToC 레일 + 단일 .wk-body (읽는 구조 + 인라인 화려함) ============ -->
+  <div class="wk-shell">
+    <nav class="wk-toc" data-doc-toc-wrap data-collapsed="false" aria-label="목차">
+      <button class="wk-toc-toggle" type="button" data-doc-toc-toggle>ON THIS PAGE <span>▾</span></button>
+      <p class="wk-toc-title">On this page</p>
+      <div data-doc-toc></div>
+    </nav>
+
+    <main class="wk-main">
+      <nav class="wk-breadcrumb" aria-label="위치">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="docs.html">Docs Space</a><span>/</span>
+        <a href="docs.html">Briefs</a><span>/</span>
+        AI-Native 전환 브리프
+      </nav>
+
+      <article class="wk-body">
+        <!-- stat tiles (카운트업) -->
+        <div class="br-stats" data-reveal>
+          <div class="br-stat"><b><span data-count="3">0</span>대 기둥</b><span>리빙 스펙 · 진화형 설계 · 시스템 검증</span></div>
+          <div class="br-stat"><b><span data-count="90">0</span>일</b><span>파일럿 → 게이트 → 확장</span><small>문서용 기준선</small></div>
+          <div class="br-stat"><b><span data-count="1">0</span>인 승인</b><span>모든 변경은 사람 승인 후 병합</span></div>
+        </div>
+
+        <div class="wk-panel is-info" data-reveal>
+          <span class="wk-panel-icon">ℹ️</span>
+          <div>
+            <span class="wk-panel-title">이 브리프의 목적</span>
+            <p>리더가 <strong>전환의 근거와 첫 90일</strong>을 빠르게 정렬하기 위한 문서입니다. 실무 규약은 <a href="doc-ai-dlc.html">AI-DLC 운영 가이드</a>를, 발표는 세미나 트랙을 참고하세요.</p>
+          </div>
+        </div>
+
+        <h2>왜 지금인가</h2>
+        <p>생성 도구는 이미 코드·테스트·문서를 빠르게 만들어냅니다. 병목은 "얼마나 빨리 만드느냐"에서 <strong>"만든 것을 얼마나 안전하게 통제하느냐"</strong>로 옮겨갔습니다. 전환하지 않은 팀은 속도를 얻는 대신 통제를 잃습니다.</p>
+        <ul>
+          <li>생성량이 늘수록 리뷰·검증 부하가 <strong>비선형으로</strong> 커집니다.</li>
+          <li>의도가 문서화되지 않으면, 빠른 생성은 <strong>기술 부채의 자동화</strong>가 됩니다.</li>
+          <li>경계가 흐려지면 "누가 무엇을 책임지는가"가 사라집니다.</li>
+        </ul>
+
+        <div class="wk-panel is-warning" data-reveal>
+          <span class="wk-panel-icon">⚠️</span>
+          <div><p>가장 흔한 실패는 도구 도입 자체가 아니라 <strong>게이트 없이 대량 생성</strong>을 허용하는 것입니다. 속도는 게이트 <em>뒤에서</em> 얻어야 합니다.</p></div>
+        </div>
+
+        <h2>세 개의 기둥</h2>
+        <p>AI-Native 전환은 아래 셋을 동시에 세울 때만 작동합니다. 하나라도 빠지면 나머지가 무너집니다.</p>
+        <div class="br-grid" data-reveal>
+          <article class="br-feature">
+            <span class="br-num">01</span><span class="br-ico">📜</span>
+            <h3>리빙 스펙</h3>
+            <p>의도를 실행 가능한 계약으로 유지한다. 변경 하나를 스펙 → 코드 → 테스트로 추적할 수 있어야 한다.</p>
+          </article>
+          <article class="br-feature">
+            <span class="br-num">02</span><span class="br-ico">🧩</span>
+            <h3>진화형 설계</h3>
+            <p>변경에 강한 구조. AI의 대안을 흡수하되, 공개 인터페이스 호환성은 사람이 지킨다.</p>
+          </article>
+          <article class="br-feature">
+            <span class="br-num">03</span><span class="br-ico">✅</span>
+            <h3>시스템 검증</h3>
+            <p>단위 테스트로 대체되지 않는 시스템 게이트. 계약·부하·사람 승인을 거쳐 병합된다.</p>
+          </article>
+        </div>
+
+        <!-- pull quote (화려함, 인라인) -->
+        <div class="br-quote" data-reveal>
+          <blockquote>“AI는 <em>생성·탐색·반복</em>을 맡고, 사람은 <em>의도·경계·검증</em>을 소유한다.”</blockquote>
+          <cite>— AI-DLC 운영 원칙</cite>
+        </div>
+
+        <h2 id="roadmap">90일 로드맵</h2>
+        <p>작게 시작해 경계를 먼저 세우고, 검증을 자동화한 뒤 확장합니다. 기간은 문서용 기준선입니다.</p>
+        <div class="br-steps" data-reveal>
+          <div class="br-step"><div><h3>경계 세우기 · Day 1–30</h3><p>역할 경계를 문서화하고 파일럿 1개를 선정한다. "사람이 소유 / AI가 담당 / 함께 반복"을 명시한다.</p></div></div>
+          <div class="br-step"><div><h3>게이트 자동화 · Day 31–60</h3><p>계약 테스트·부하 임계값을 CI에 편입한다. 승인 게이트는 자동화로 대체하지 않는다.</p></div></div>
+          <div class="br-step"><div><h3>확장 · Day 61–90</h3><p>팀 전면 적용 + 회고 루프. 반복되는 AI 지적은 린트 규칙·스펙으로 승격한다.</p></div></div>
+        </div>
+
+        <h2>성공을 어떻게 아는가</h2>
+        <p>전환의 성공은 "생성량"이 아니라 <strong>통제 지표</strong>로 측정합니다.</p>
+        <div class="wk-table-wrap" data-reveal>
+          <table>
+            <thead><tr><th>지표</th><th>나쁜 신호</th><th>좋은 신호</th></tr></thead>
+            <tbody>
+              <tr><td>리뷰 리드타임</td><td>PR이 며칠씩 정체</td><td><span class="wk-status is-green">24h 내 첫 응답</span></td></tr>
+              <tr><td>게이트 통과율</td><td>게이트 우회·스킵</td><td><span class="wk-status is-green">100% 통과 후 병합</span></td></tr>
+              <tr><td>스펙 추적성</td><td>변경↔스펙 불일치</td><td><span class="wk-status is-blue">ID로 추적 가능</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="wk-panel is-tip" data-reveal>
+          <span class="wk-panel-icon">💡</span>
+          <div><span class="wk-panel-title">팁</span><p>부하 임계값을 스펙에 명시하면, AI 생성물이 자동으로 그 기준을 목표로 삼습니다.</p></div>
+        </div>
+
+        <details class="wk-expand">
+          <summary>자세히: 전환을 막는 흔한 반론과 대응 (펼쳐 보기)</summary>
+          <div class="wk-expand-body">
+            <ul>
+              <li><b>"게이트가 느리게 만든다"</b> — 게이트는 되돌리기 어려운 실수의 비용을 앞당길 뿐, 총비용을 낮춘다.</li>
+              <li><b>"AI가 알아서 검증한다"</b> — AI는 1차 필터로 유용하지만 도메인 의도·조직 맥락은 사람이 본다.</li>
+              <li><b>"우린 이미 빠르다"</b> — 속도의 정의를 '생성'에서 '안전한 릴리스'로 바꾸면 병목이 드러난다.</li>
+            </ul>
+          </div>
+        </details>
+      </article>
+    </main>
+  </div>
+
+  <!-- ============ CTA 밴드 (화려함, 풀블리드) ============ -->
+  <section class="br-section">
+    <div class="br-cta" data-reveal>
+      <h2>다음 한 걸음</h2>
+      <p>파일럿 팀 하나를 정하고, 역할 경계 한 장을 먼저 문서화하세요. 나머지는 게이트가 이끕니다.</p>
+      <a class="br-btn" href="doc-ai-dlc.html">운영 가이드로 시작하기 <span>→</span></a>
+    </div>
+    <p style="text-align:center;color:var(--wk-muted);font-size:13px;margin-top:22px">
+      이 브리프는 <code>brief-builder</code> 스킬로 생성한 <strong>문서용 예시</strong>입니다 ·
+      <a href="docs.html">← Docs Space</a>
+    </p>
+  </section>
+
+  <script src="doc.js"></script>
+  <script src="brief.js"></script>
+</body>
+</html>

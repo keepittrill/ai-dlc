@@ -1,0 +1,179 @@
+/* ==========================================================================
+   brief.css — "테크 브리프" 화려함 레이어
+   --------------------------------------------------------------------------
+   문서 트랙(doc.css)의 토큰·본문 타이포·패널·표를 그대로 재사용하고,
+   그 위에 "적당히 화려한" 프레젠테이션 요소(히어로·스탯·피처 그리드·풀쿼트·
+   단계·CTA·스크롤 등장)를 얹는다. 반드시 doc.css **다음에** 로드한다.
+   테마는 doc.js 가 관리하는 <html data-doc-theme="light|dark"> 를 따른다.
+   콘텐츠는 담지 않는다(메커니즘/외형만). 새 클래스는 br-* 네임스페이스.
+   ========================================================================== */
+
+:root {
+  /* Docs Light / Blueprint 계열 — 밝은 테크니컬 톤, 블루 액센트 */
+  --br-accent: #0b64d8;
+  --br-accent-2: #2563eb;
+  --br-accent-3: #0d9f6e;
+  --br-grid: rgba(11,100,216,.09);        /* 도면 그리드 라인 */
+  --br-grid-size: 30px;
+  --br-hero-tint: radial-gradient(1100px 480px at 12% -12%, rgba(37,99,235,.10) 0%, transparent 62%),
+                  radial-gradient(820px 440px at 96% -4%, rgba(11,100,216,.08) 0%, transparent 58%);
+  --br-hero-ink: #0b2239;
+  --br-tick: rgba(11,100,216,.5);          /* 코너 틱 */
+  --br-ease: cubic-bezier(.22,.61,.36,1);
+}
+[data-doc-theme="dark"] {
+  --br-accent: #579dff;
+  --br-accent-2: #85b8ff;
+  --br-accent-3: #4bce97;
+  --br-grid: rgba(87,157,255,.10);
+  --br-hero-tint: radial-gradient(1100px 480px at 12% -12%, rgba(87,157,255,.10) 0%, transparent 62%),
+                  radial-gradient(820px 440px at 96% -4%, rgba(87,157,255,.06) 0%, transparent 58%);
+  --br-hero-ink: #dee4ea;
+  --br-tick: rgba(133,184,255,.5);
+}
+
+/* ---- scroll reveal (brief.js toggles .is-in) ----------------------------- */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--br-ease), transform .6s var(--br-ease); }
+[data-reveal].is-in { opacity: 1; transform: none; }
+[data-reveal][data-reveal="left"] { transform: translateX(-18px); }
+[data-reveal][data-reveal="zoom"] { transform: scale(.96); }
+[data-reveal].is-in[data-reveal] { transform: none; }
+@media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1 !important; transform: none !important; } }
+
+/* ---- hero ---------------------------------------------------------------- */
+.br-hero {
+  position: relative; overflow: hidden;
+  background: var(--br-hero-tint), var(--wk-surface);
+  border-bottom: 1px solid var(--wk-line);
+}
+/* 은은한 도면 그리드 (Blueprint 느낌) */
+.br-hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(var(--br-grid) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--br-grid) 1px, transparent 1px);
+  background-size: var(--br-grid-size) var(--br-grid-size);
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+.br-hero-inner { position: relative; max-width: 1080px; margin: 0 auto; padding: 72px 24px 60px; }
+.br-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--wk-mono); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--br-accent); margin: 0 0 18px;
+}
+.br-eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--br-accent); }
+.br-hero h1 {
+  font-size: clamp(32px, 6vw, 60px); line-height: 1.08; font-weight: 800; letter-spacing: -.025em;
+  color: var(--br-hero-ink); margin: 0 0 20px; max-width: 20ch;
+}
+.br-hero h1 em { font-style: normal; background: linear-gradient(100deg, var(--br-accent), var(--br-accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.br-hero-lead { font-size: clamp(16px, 2.2vw, 20px); color: var(--wk-muted); max-width: 60ch; margin: 0 0 28px; line-height: 1.6; }
+.br-hero-meta { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin-bottom: 28px; }
+.br-chip {
+  display: inline-flex; align-items: center; gap: 7px; padding: 6px 13px;
+  border: 1px solid var(--wk-line); border-radius: 999px; background: var(--wk-surface);
+  font-size: 12.5px; font-weight: 600; color: var(--wk-muted);
+}
+.br-chip b { color: var(--wk-heading); }
+.br-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.br-btn {
+  display: inline-flex; align-items: center; gap: 9px; padding: 12px 22px;
+  border-radius: 10px; font-weight: 700; font-size: 15px;
+  background: linear-gradient(100deg, var(--br-accent), var(--br-accent-2)); color: #fff;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--br-accent) 32%, transparent);
+  transition: transform .18s var(--br-ease), box-shadow .18s var(--br-ease);
+}
+.br-btn:hover { transform: translateY(-2px); text-decoration: none; color: #fff; box-shadow: 0 16px 32px color-mix(in srgb, var(--br-accent) 40%, transparent); }
+.br-btn.is-ghost { background: var(--wk-surface); color: var(--wk-heading); border: 1px solid var(--wk-line); box-shadow: none; }
+.br-btn.is-ghost:hover { border-color: var(--br-accent); color: var(--br-accent); }
+
+/* ---- section rhythm ------------------------------------------------------ */
+.br-section { max-width: 1080px; margin: 0 auto; padding: 56px 24px; }
+.br-section-head { max-width: 62ch; margin: 0 0 30px; }
+.br-section-head .br-kicker {
+  display: block; font-family: var(--wk-mono); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--br-accent); margin-bottom: 10px;
+}
+.br-section-head h2 { font-size: clamp(24px, 3.2vw, 34px); font-weight: 800; letter-spacing: -.015em; color: var(--wk-heading); margin: 0 0 12px; line-height: 1.2; }
+.br-section-head p { color: var(--wk-muted); margin: 0; font-size: 16px; }
+.br-section.is-tint { background: var(--wk-surface-sunken); border-block: 1px solid var(--wk-line-soft); max-width: none; }
+.br-section.is-tint > * { max-width: 1080px; margin-inline: auto; }
+
+/* ---- stat tiles ---------------------------------------------------------- */
+.br-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+.br-stat {
+  padding: 22px; border: 1px solid var(--wk-line); border-radius: var(--wk-radius-lg);
+  background: var(--wk-surface); box-shadow: var(--wk-shadow);
+}
+.br-stat b { display: block; font-family: var(--wk-mono); font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -.02em;
+  background: linear-gradient(100deg, var(--br-accent), var(--br-accent-3)); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.1; }
+.br-stat span { display: block; margin-top: 6px; color: var(--wk-muted); font-size: 14px; }
+.br-stat small { display: block; margin-top: 8px; color: var(--wk-faint); font-size: 12px; }
+
+/* ---- feature grid (icon cards) ------------------------------------------ */
+.br-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.br-feature {
+  position: relative; padding: 24px; border: 1px solid var(--wk-line); border-radius: var(--wk-radius-lg);
+  background: var(--wk-surface); box-shadow: var(--wk-shadow);
+  transition: transform .2s var(--br-ease), border-color .2s var(--br-ease);
+}
+.br-feature:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--br-accent) 45%, var(--wk-line)); }
+/* 도면 코너 틱 (Blueprint 느낌) */
+.br-feature::before, .br-feature::after {
+  content: ""; position: absolute; width: 9px; height: 9px; pointer-events: none;
+}
+.br-feature::before { top: 9px; left: 9px; border-top: 1.5px solid var(--br-tick); border-left: 1.5px solid var(--br-tick); }
+.br-feature::after { bottom: 9px; right: 9px; border-bottom: 1.5px solid var(--br-tick); border-right: 1.5px solid var(--br-tick); }
+.br-feature .br-ico {
+  display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; margin-bottom: 16px;
+  font-size: 22px; background: color-mix(in srgb, var(--br-accent) 12%, transparent); color: var(--br-accent);
+}
+.br-feature h3 { margin: 0 0 8px; font-size: 18px; color: var(--wk-heading); }
+.br-feature p { margin: 0; color: var(--wk-muted); font-size: 14.5px; }
+.br-feature .br-num { position: absolute; top: 18px; right: 20px; font-family: var(--wk-mono); font-size: 13px; color: var(--wk-faint); font-weight: 600; }
+
+/* ---- pull quote ---------------------------------------------------------- */
+.br-quote { max-width: 900px; margin: 0 auto; padding: 44px 24px; text-align: center; }
+.br-quote blockquote {
+  margin: 0; border: none; padding: 0; font-style: normal;
+  font-size: clamp(22px, 3.4vw, 34px); line-height: 1.35; font-weight: 700; letter-spacing: -.015em;
+  color: var(--wk-heading);
+}
+.br-quote blockquote em { font-style: normal; color: var(--br-accent); }
+.br-quote cite { display: block; margin-top: 18px; font-style: normal; color: var(--wk-muted); font-size: 14px; }
+
+/* ---- steps (numbered timeline) ------------------------------------------ */
+.br-steps { display: grid; gap: 14px; counter-reset: brstep; }
+.br-step {
+  display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start;
+  padding: 20px 22px; border: 1px solid var(--wk-line); border-radius: var(--wk-radius-lg); background: var(--wk-surface);
+}
+.br-step::before {
+  counter-increment: brstep; content: counter(brstep, decimal-leading-zero);
+  display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px;
+  font-family: var(--wk-mono); font-weight: 700; font-size: 15px;
+  background: linear-gradient(140deg, var(--br-accent), var(--br-accent-2)); color: #fff;
+}
+.br-step h3 { margin: 2px 0 6px; font-size: 17px; color: var(--wk-heading); }
+.br-step p { margin: 0; color: var(--wk-muted); font-size: 14.5px; }
+
+/* ---- CTA band ------------------------------------------------------------ */
+.br-cta {
+  position: relative; overflow: hidden; text-align: center;
+  padding: 56px 24px; border-radius: var(--wk-radius-lg);
+  background: linear-gradient(120deg, var(--br-accent), var(--br-accent-2));
+  color: #fff;
+}
+.br-cta h2 { margin: 0 0 12px; font-size: clamp(24px, 3.4vw, 34px); font-weight: 800; letter-spacing: -.015em; }
+.br-cta p { margin: 0 auto 24px; max-width: 52ch; opacity: .92; }
+.br-cta .br-btn { background: #fff; color: var(--br-accent); box-shadow: 0 12px 30px rgba(0,0,0,.22); }
+.br-cta .br-btn:hover { color: var(--br-accent-2); }
+
+/* ---- reading progress bar (brief.js) ------------------------------------ */
+.br-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+.br-progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--br-accent), var(--br-accent-2)); }
+
+@media (max-width: 720px) {
+  .br-hero-inner { padding: 52px 20px 44px; }
+  .br-section { padding: 44px 20px; }
+}

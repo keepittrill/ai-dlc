@@ -22,8 +22,14 @@
   var saved = null;
   try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
   if (saved !== "light" && saved !== "dark") {
-    var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    saved = prefersDark ? "dark" : "light";
+    // 저장된 선택이 없으면 페이지가 지정한 기본값(밝은 배경 등)을 우선한다.
+    var preset = root.getAttribute("data-doc-theme");
+    if (preset === "light" || preset === "dark") {
+      saved = preset;
+    } else {
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      saved = prefersDark ? "dark" : "light";
+    }
   }
   applyTheme(saved);
   doc.addEventListener("click", function (e) {

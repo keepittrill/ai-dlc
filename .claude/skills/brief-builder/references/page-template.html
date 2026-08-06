@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko" data-doc-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{DESC}}" />
+  <title>{{TITLE}} · Brief</title>
+  <link rel="stylesheet" href="doc.css" />
+  <link rel="stylesheet" href="brief.css" />
+</head>
+<body>
+  <div class="br-progress" data-br-progress><i></i></div>
+
+  <header class="wk-topbar">
+    <a class="wk-brand" href="docs.html"><span class="wk-brand-mark">AI</span> Docs Space <small>AI-NATIVE SE</small></a>
+    <div class="wk-topbar-spacer"></div>
+    <a class="wk-iconbtn" href="index.html" title="세미나 허브" aria-label="세미나 허브">◇</a>
+    <button class="wk-iconbtn" type="button" data-doc-theme-toggle aria-label="다크 모드">☾</button>
+  </header>
+
+  <!-- HERO (풀블리드) -->
+  <section class="br-hero">
+    <div class="br-hero-inner">
+      <p class="br-eyebrow" data-reveal>{{EYEBROW}}</p>
+      <h1 data-reveal data-reveal-delay="80">{{HERO_H1}}</h1>
+      <p class="br-hero-lead" data-reveal data-reveal-delay="160">{{LEAD}}</p>
+      <div class="br-hero-meta" data-reveal data-reveal-delay="220">
+        {{HERO_META}}
+        <span class="br-chip"><b>읽는 시간</b> <span data-doc-readtime>—</span></span>
+      </div>
+      <div class="br-cta-row" data-reveal data-reveal-delay="280">
+        {{HERO_CTA}}
+      </div>
+    </div>
+  </section>
+
+  <!-- 본문: ToC + 단일 .wk-body -->
+  <div class="wk-shell">
+    <nav class="wk-toc" data-doc-toc-wrap data-collapsed="false" aria-label="목차">
+      <button class="wk-toc-toggle" type="button" data-doc-toc-toggle>ON THIS PAGE <span>▾</span></button>
+      <p class="wk-toc-title">On this page</p>
+      <div data-doc-toc></div>
+    </nav>
+    <main class="wk-main">
+      <nav class="wk-breadcrumb" aria-label="위치">
+        {{BREADCRUMB}}
+      </nav>
+      <article class="wk-body">
+        {{BODY}}
+      </article>
+    </main>
+  </div>
+
+  <!-- CTA 밴드 (풀블리드) -->
+  <section class="br-section">
+    <div class="br-cta" data-reveal>
+      {{CTA}}
+    </div>
+  </section>
+
+  <script src="doc.js"></script>
+  <script src="brief.js"></script>
+</body>
+</html>
